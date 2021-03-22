@@ -1,0 +1,142 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <!-- topbar -->
+      <nav class="shadow topbar mb-4 bg-white static-tp navbar-expand navbar navbar-light">
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-0 mw-100 navbar-search">
+          <div class="input-group">
+            <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for ..."
+              aria-label="Search" aria-describedby="basic-addon2" />
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link dropdown" (click)='logoutUser()'>
+              <span class="mr-2 d-none d-lg-inline">
+                LOGOUT
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Page content  -->
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        </div>
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold">Formulaire</h6>
+          </div>
+          <div class="card-body">
+            <div class="row ">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nom">Nom</label>
+                  <input id="nom" type="text" class="form-control" name="nom" [(ngModel)]="newPatient.nom">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="prenom">Prénom</label>
+                  <input id="prenom" type="text" class="form-control" name="prenom" [(ngModel)]="newPatient.prenom">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="janvier">Janvier</label>
+                  <input id="janvier" type="date" class="form-control" name="janvier" [(ngModel)]="newPatient.janvier">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="fevrier">Février</label>
+                  <input id="fevrier" type="date" class="form-control" name="fevrier" [(ngModel)]="newPatient.fevrier">
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="mars"> Mars</label>
+                  <input id="mars" type="date" class="form-control" name=" mars" [(ngModel)]="newPatient.mars">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="avril">Avril</label>
+                  <input id="avril" type="date" class="form-control" name="avril" [(ngModel)]="newPatient.avril">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="mai">Mai</label>
+                  <input id="mai" type="date" class="form-control" name="mai" [(ngModel)]="newPatient.mai">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="juin">Juin</label>
+                  <input id="juin" type="date" class="form-control" name="juin" [(ngModel)]="newPatient.juin">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="juillet">Juillet</label>
+                  <input id="juillet" type="date" class="form-control" name="juillet" [(ngModel)]="newPatient.juillet">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="aout">Aout</label>
+                  <input id="aout" type="date" class="form-control" name="aout" [(ngModel)]="newPatient.aout">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="septembre">Septembre</label>
+                  <input id="septembre" type="date" class="form-control" name="septembre"
+                    [(ngModel)]="newPatient.septembre">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="octobre">Octobre</label>
+                  <input id="octobre" type="date" class="form-control" name=" octobre" [(ngModel)]="newPatient.octobre">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="novembre">Novembre</label>
+                  <input id="novembre" type="date" class="form-control" name="novembre"
+                    [(ngModel)]="newPatient.novembre">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="decembre">Décembre</label>
+                  <input id="decembre" type="date" class="form-control" name="decembre"
+                    [(ngModel)]="newPatient.decembre">
+                </div>
+              </div>
+            </div>
+            <div class="buttonSave mb-3 mt-3">
+              <button aria-label="save" (click)='add()' class="save-btn btn-primary ">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <app-footer></app-footer>
+  </div>
+
+</div>

@@ -1,0 +1,117 @@
+#wrapper {
+  display: flex;
+}
+#content-wrapper {
+  background-color: #f8f9fc;
+  width: 100%;
+  overflow-x: auto;
+}
+#content {
+  flex: 1 0 auto;
+}
+.topbar {
+  height: 4.3rem;
+}
+.navbar-search {
+  width: 25rem;
+}
+.topbar .navbar-search input {
+  font-size: 0.85rem;
+  height: auto;
+}
+.navbar-nav {
+  margin-top: 0;
+}
+.dropdown .nav-item  {
+  height: 3.375rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  position: relative;
+}
+.nav-item  .img-profile {
+  height: 2.5rem;
+  width: 3rem;
+}
+.nav-item span {
+  font-size: 15px;
+  font-weight: 700;
+  color: #265c8b;
+}
+.container-fluid {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.container-fluid .formulaireBtn{
+  border: none;
+  background: transparent;
+}
+.fa-user-plus:before {
+  font-size: 26px;
+  color: #be4402;
+}
+.row {
+  margin: 0;
+}
+.card-header h6 {
+  color: #be4402;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.pad {
+  padding-top: 1rem;
+}
+.text {
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+}
+.text .form-control {
+  margin-left: 0.5em;
+  display: inline-block;
+  width: auto;
+}
+
+.dataTables_filter {
+  text-align: right;
+}
+table.table-bordered.dataTable {
+  border-right-width: 0;
+}
+table.dataTable {
+  clear: both;
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+  max-width: none !important;
+  border-collapse: separate !important;
+  border-spacing: 0;
+}
+.table {
+  color: #535776;
+}
+.table th,
+td {
+  padding: 10px;
+  border: 1px solid #e3e6f0;
+}
+.card-body {
+  padding: 0;
+  overflow-x: auto;
+}
+.consulter{
+  background-color: transparent;
+  color: #be4402;
+  border: 1px solid #be4402;
+  padding: 9px 16px;
+  border-radius: 9px;
+  font-size: small;
+  font-weight: bold;
+}
+.consulter:hover{
+  background-color:#be4402;
+  color: white;
+  border: 1px solid  #be4402;
+}
+.pag pagination-controls  {
+  color: #000;
+}

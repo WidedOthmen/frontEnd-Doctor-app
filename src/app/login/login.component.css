@@ -1,0 +1,77 @@
+.login{
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient( 130deg,#ff7a18,#af002d 41.07%,#319197 76.05%);
+  /* centering inner content */
+  display: flex;
+ /* centering along main axis - X axis - Horizontal */
+  justify-content: center;
+/* centering along cross axis - Y axis - Vertical */
+  align-items: center;
+}
+body {
+  margin: 0;
+}
+.header {
+  text-align: center;
+  font-size: 107px;
+  margin-bottom: 7px;
+  color: #00b4ef;
+}
+.content{
+  margin: 12px 0;
+  position: relative;
+}
+input {
+  overflow: visible;
+  border-radius: 33px;
+  padding: 12px 70px;
+  border: 0;
+  height: 52px;
+}
+
+.fontawsom{
+  border-right: 1px solid gray;
+  color: gray;
+  position: absolute;
+  left: 21px;
+  top: 16px;
+  font-size: 18px;
+  padding-right: 8px;
+}
+.register{
+  display: flex;
+}
+.account{
+  color: #1e87f0;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 13px;
+  border:none;
+  background-color: transparent;
+  margin-right: 40px;
+}
+.registerBtn{
+  color: #1e87f0;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 13px;
+  border:none;
+  background-color: transparent;
+}
+.btnn{
+  text-align: center;
+  margin-top: 8px;
+}
+.btnn .log{
+  border-radius: 33px;
+  padding: 12px 55px;
+  border: none;
+  color:#1d1d1d;
+  background-color: #00b4ef;
+  font-weight: 500;
+}
+.btnn .log:hover{
+  background-color: #1e87f0;
+  transition: 0.2s ease;
+}

@@ -1,0 +1,380 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <!-- topbar -->
+      <nav class="shadow topbar mb-4 bg-white static-tp navbar-expand navbar navbar-light">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link dropdown" (click)='logoutUser()'>
+              <span class="mr-2 d-none d-lg-inline">
+                LOGOUT
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Page content  -->
+      <div class="container-fluid ">
+        <div class="d-sm-flex align-items-center justify-content-start mb-4">
+          <button aria-label="navigate" (click)='navigateToPatient()' class="title">
+            <i class="fas fa-chevron-left arrow"></i>
+            Détails du patient
+          </button>
+        </div>
+        <div class="card shadow mb-4 ">
+          <div class="card-header py-3 ">
+            <h6 class="m-0 font-weight-bold ">BILAN TRIMESTRIEL</h6>
+          </div>
+          <div class="card-body" *ngIf="results">
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table  dataTable" id="dataTable" aria-describedby="dataTable_info"
+                  style="width: 100%; border-right-width: 0; border: 1px solid #e3e6f0;">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-sort="ascending" aria-label="Name: activate to sort column descending">
+                        Date
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        (T1)
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        (T2)
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        (T3)
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        (T4)
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Observations
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr role="row">
+                      <td class="sorting_1">Poids</td>
+                      <td>{{results.poidsT1}}</td>
+                      <td>{{results.poidsT2}} </td>
+                      <td>{{results.poidsT3}}</td>
+                      <td>{{results.poidsT4}} </td>
+                      <td>{{results.poidsObserv}} </td>
+                    </tr>
+                    <tr role="row">
+                      <td class="sorting_1">Taille</td>
+                      <td>{{results.tailleT1}}</td>
+                      <td>{{results.tailleT2}} </td>
+                      <td>{{results.tailleT3}}</td>
+                      <td>{{results.tailleT4}}</td>
+                      <td>{{results.tailleObserv}} </td>
+                    </tr>
+                    <tr role="row">
+                      <td>Ferritine(µg/I)</td>
+                      <td>{{results.ferritineT1}}</td>
+                      <td>{{results.ferritineT2}}</td>
+                      <td>{{results.ferritineT3}}</td>
+                      <td>{{results.ferritineT4}}</td>
+                      <td>{{results.ferritineObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>ASAT(U/L)</td>
+                      <td>{{results.asatT1}}</td>
+                      <td>{{results.asatT2}} </td>
+                      <td>{{results.asatT3}}</td>
+                      <td>{{results.asatT4}} </td>
+                      <td>{{results.asatObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>ALAT(U/I)s</td>
+                      <td>{{results.alatT1}}</td>
+                      <td>{{results.alatT2}}</td>
+                      <td>{{results.alatT3}}</td>
+                      <td>{{results.alatT4}}</td>
+                      <td>{{results.alatObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>BBT(µmol/I)</td>
+                      <td>{{results.bbtT1}}</td>
+                      <td>{{results.bbtT2}} </td>
+                      <td>{{results.bbtT3}}</td>
+                      <td>{{results.bbtT4}} </td>
+                      <td>{{results.bbtObserv}} </td>
+                    </tr>
+                    <tr role="row">
+                      <td>BBI(µmol/I)</td>
+                      <td>{{results.bbiT1}}</td>
+                      <td>{{results.bbiT2}} </td>
+                      <td>{{results.bbiT3}}</td>
+                      <td>{{results.bbiT4}} </td>
+                      <td>{{results.bbiObserv}} </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="icons mt-4 text-center">
+              <button aria-label="delete" (click)="delete(results._id)" type="button"
+                class="btn btn-outline-danger mr-3"><i class="fas fa-trash-restore"></i></button>
+              <button aria-label="update" (click)="openModal(modify)" type="button" class="btn btn-outline-primary"><i
+                  class="fas fa-user-edit"></i></button>
+            </div>
+          </div>
+          <ng-template #modify>
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="title" id="defaultModalLabel">Modifier </h4>
+              </div>
+              <div class="modal-body">
+                <form *ngIf="results">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Poids T1 </label>
+                        <input type="number" class="form-control" name=" poidsT1" [(ngModel)]="results.poidsT1" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Poids T2 </label>
+                        <input type="number" class="form-control" name=" poidsT2" [(ngModel)]="results.poidsT2" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Poids T3</label>
+                        <input type="number" class="form-control" name="poidsT3" [(ngModel)]="results.poidsT3" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Poids T4</label>
+                        <input type="number" class="form-control" name="poidsT4" [(ngModel)]="results.poidsT4" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name="poidsObserv" [(ngModel)]="results.poidsObserv" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Taille T1</label>
+                        <input type="number" class="form-control" name=" tailleT1" [(ngModel)]="results.tailleT1" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Taille T2</label>
+                        <input type="number" class="form-control" name="tailleT2" [(ngModel)]="results.tailleT2" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Taille T3</label>
+                        <input type="number" class="form-control" name="tailleT3" [(ngModel)]="results.tailleT3" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Taille T4</label>
+                        <input type="number" class="form-control" name="tailleT4" [(ngModel)]="results.tailleT4" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name="tailleObserv"
+                          [(ngModel)]="results.tailleObserv" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Ferritine(µg/I) T1</label>
+                        <input type="text" class="form-control" name=" ferritineT1" [(ngModel)]="results.ferritineT1" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Ferritine(µg/I) T2</label>
+                        <input type="text" class="form-control" name="ferritineT2" [(ngModel)]="results.ferritineT2" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Ferritine(µg/I) T3</label>
+                        <input type="text" class="form-control" name="ferritineT3" [(ngModel)]="results.ferritineT3" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Ferritine(µg/I) T4</label>
+                        <input type="text" class="form-control" name="ferritineT4" [(ngModel)]="results.ferritineT4" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label> Observations</label>
+                        <input type="text" class="form-control" name="ferritineObserv"
+                          [(ngModel)]="results.ferritineObserv" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>ASAT(U/L) T1</label>
+                        <input type="text" class="form-control" name="asatT1" [(ngModel)]="results.asatT1" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>ASAT(U/L) T2</label>
+                        <input type="text" class="form-control" name="asatT2" [(ngModel)]="results.asatT2" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>ASAT(U/L) T3</label>
+                        <input type="text" class="form-control" name="asatT3" [(ngModel)]="results.asatT3" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>ASAT(U/L) T4</label>
+                        <input type="text" class="form-control" name="asatT4" [(ngModel)]="results.asatT4" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label> Observations</label>
+                        <input type="text" class="form-control" name="asatObserv" [(ngModel)]="results.asatObserv" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>ALAT(U/I)s T1</label>
+                        <input type="text" class="form-control" name="alatT1" [(ngModel)]="results.alatT1" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>ALAT(U/I)s T2</label>
+                        <input type="text" class="form-control" name="alatT2" [(ngModel)]="results.alatT2" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>ALAT(U/I)s T3</label>
+                        <input type="text" class="form-control" name="alatT3" [(ngModel)]="results.alatT3" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>ALAT(U/I)s T4</label>
+                        <input type="text" class="form-control" name="alatT4" [(ngModel)]="results.alatT4" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label> Observations</label>
+                        <input type="text" class="form-control" name=" alatObserv" [(ngModel)]="results. alatObserv" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>BBT(µmol/I) T1</label>
+                        <input type="text" class="form-control" name="bbtT1" [(ngModel)]="results.bbtT1" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>BBT(µmol/I) T2</label>
+                        <input type="text" class="form-control" name="bbtT2" [(ngModel)]="results.bbtT2" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>BBT(µmol/I) T3</label>
+                        <input type="text" class="form-control" name="bbtT3" [(ngModel)]="results.bbtT3" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>BBT(µmol/I) T4</label>
+                        <input type="text" class="form-control" name="bbtT4" [(ngModel)]="results.bbtT4" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label> Observations</label>
+                        <input type="text" class="form-control" name="bbtObserv" [(ngModel)]="results.bbtObserv" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>BBI(µmol/I) T1</label>
+                        <input type="text" class="form-control" name="bbiT1" [(ngModel)]="results.bbiT1" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>BBI(µmol/I) T2</label>
+                        <input type="text" class="form-control" name="bbiT2" [(ngModel)]="results.bbiT2" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>BBI(µmol/I) T3</label>
+                        <input type="text" class="form-control" name="bbiT3" [(ngModel)]="results.bbiT3" />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>BBI(µmol/I) T4</label>
+                        <input type="text" class="form-control" name="bbiT4" [(ngModel)]="results.bbiT4" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label> Observations</label>
+                        <input type="text" class="form-control" name="bbiObserv" [(ngModel)]="results.bbiObserv" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button aria-label="update" type="button" (click)='modifyResults()'
+                  class="btn btn-primary">Modifier</button>
+                <button aria-label="reset" type="button" (click)="onReset()" class="btn btn-danger"
+                  data-dismiss="modal">Annuler</button>
+              </div>
+            </div>
+          </ng-template>
+          <div class="card-body" *ngIf="!results">
+            <app-formulaire-trimestriel></app-formulaire-trimestriel>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <app-footer></app-footer>
+  </div>
+</div>

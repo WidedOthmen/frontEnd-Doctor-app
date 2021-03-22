@@ -1,0 +1,347 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+  <div id="content-wrapper " class="d-flex flex-column"
+    style=" background-color: #f8f9fc; width: 100%; overflow-x: hidden;">
+    <div id="content">
+      <!-- topbar -->
+      <nav class="shadow topbar mb-4 bg-white static-tp navbar-expand navbar navbar-light">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link dropdown" (click)='logoutUser()'>
+              <span class="mr-2 d-none d-lg-inline">
+                LOGOUT
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Page content  -->
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-start mb-4">
+          <button aria-label="navigate" (click)='navigateToPatient()' class="title">
+            <i class="fas fa-chevron-left arrow"></i>
+            Détails du patient
+          </button>
+        </div>
+        <div *ngIf="!tests">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold">Examen</h6>
+            </div>
+            <div class="card-body">
+              <div class="row ">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen coeur </label>
+                    <textarea name="examenCoeur" [(ngModel)]=" test.examenCoeur" rows="4" cols="50"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen pulmonaire </label>
+                    <textarea name="examenPulmonaire" [(ngModel)]=" test.examenPulmonaire" rows="4" cols="50"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen abdominal </label>
+                    <textarea name=" examenAbdominal" [(ngModel)]=" test.examenAbdominal" rows="4" cols="50"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen cutané </label>
+                    <textarea name="examenCutane" [(ngModel)]=" test.examenCutane" rows="4" cols="50"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen urologique </label>
+                    <textarea name=" examenUrologique" [(ngModel)]=" test.examenUrologique" rows="4" cols="50"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen des aires ganglionnaires </label>
+                    <textarea name="examenAiresGanglionnaires" [(ngModel)]=" test.examenAiresGanglionnaires" rows="4"
+                      cols="50" class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen neurologique </label>
+                    <textarea name=" examenNeurologique" [(ngModel)]=" test.examenNeurologique" rows="4" cols="50"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen des membres </label>
+                    <textarea name="examenMembres" [(ngModel)]=" test.examenMembres" rows="4" cols="50"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen des orifices herniaires </label>
+                    <textarea name="examenOrificesHerniares" [(ngModel)]=" test.examenOrificesHerniares" rows="4"
+                      cols="50" class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen gynécologique </label>
+                    <textarea name=" examenGynecologique" [(ngModel)]=" test.examenGynecologique" rows="4" cols="50"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Autres </label>
+                    <textarea name=" examenAutre" [(ngModel)]=" test.examenAutre" rows="4" cols="50"
+                      class="form-control"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="font-weight-bold m-0">Probléme posé par ce patient</h6>
+            </div>
+            <div class="row ">
+              <div class="col-xl-10">
+                <div class="form-group">
+                  <textarea name="problemePose" [(ngModel)]=" test.problemePose" cols="30" rows="6"
+                    class="form-control"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="buttonSave mb-3 mt-3">
+              <button aria-label="save" (click)="add()" class="save-btn btn-primary ">sauvegarder</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="tests">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold">Examen</h6>
+            </div>
+            <div class="card-body">
+              <div class="row ">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen coeur </label>
+                    <p>{{tests.examenCoeur}}</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen pulmonaire </label>
+                    <p>{{tests.examenPulmonaire}}</p>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen abdominal </label>
+                    <p>{{ tests.examenAbdominal}}</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen cutané </label>
+                    <p>{{ tests.examenCutane}}</p>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen urologique </label>
+                    <p>{{tests.examenUrologique}}</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen des aires ganglionnaires </label>
+                    <p>{{tests.examenAiresGanglionnaires}}</p>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen neurologique </label>
+                    <p>{{tests.examenNeurologique}}</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen des membres </label>
+                    <p>{{tests.examenMembres}}</p>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen des orifices herniaires </label>
+                    <p>{{ tests.examenOrificesHerniares}}</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Examen gynécologique </label>
+                    <p>{{tests.examenGynecologique}}</p>
+                  </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Autres </label>
+                    <p>{{tests.examenAutre}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="font-weight-bold m-0">Probléme posé par ce patient</h6>
+            </div>
+            <div class="row ">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <p>{{tests.problemePose}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="icons mt-4 mb-4 text-center">
+              <button aria-label="delete" (click)="delete(tests._id)" type="button"
+                class="btn btn-outline-danger mr-3"><i class="fas fa-trash-restore"></i></button>
+              <button aria-label="update" (click)="openModal(modify)" type="button" class="btn btn-outline-primary"><i
+                  class="fas fa-user-edit"></i></button>
+            </div>
+          </div>
+        </div>
+        <!-- modal -->
+        <ng-template #modify>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="title" id="defaultModalLabel">Modifier </h4>
+            </div>
+            <div class="modal-body">
+              <form *ngIf="tests">
+                <div class="row ">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Examen coeur </label>
+                      <textarea name="examenCoeur" [(ngModel)]=" tests.examenCoeur" rows="4" cols="50"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Examen pulmonaire </label>
+                      <textarea name="examenPulmonaire" [(ngModel)]=" tests.examenPulmonaire" rows="4" cols="50"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Examen abdominal </label>
+                      <textarea name=" examenAbdominal" [(ngModel)]=" tests.examenAbdominal" rows="4" cols="50"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Examen cutané </label>
+                      <textarea name="examenCutane" [(ngModel)]=" tests.examenCutane" rows="4" cols="50"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Examen urologique </label>
+                      <textarea name=" examenUrologique" [(ngModel)]=" tests.examenUrologique" rows="4" cols="50"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Examen des aires ganglionnaires </label>
+                      <textarea name="examenAiresGanglionnaires" [(ngModel)]=" tests.examenAiresGanglionnaires" rows="4"
+                        cols="50" class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Examen neurologique </label>
+                      <textarea name=" examenNeurologique" [(ngModel)]=" tests.examenNeurologique" rows="4" cols="50"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Examen des membres </label>
+                      <textarea name="examenMembres" [(ngModel)]=" tests.examenMembres" rows="4" cols="50"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Examen des orifices herniaires </label>
+                      <textarea name="examenOrificesHerniares" [(ngModel)]=" tests.examenOrificesHerniares" rows="4"
+                        cols="50" class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Examen gynécologique </label>
+                      <textarea name=" examenGynecologique" [(ngModel)]=" tests.examenGynecologique" rows="4" cols="50"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Autres </label>
+                      <textarea name=" examenAutre" [(ngModel)]=" tests.examenAutre" rows="4" cols="50"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Probléme posé par ce patient</label>
+                      <textarea name="problemePose" [(ngModel)]=" tests.problemePose" cols="30" rows="6"
+                        class="form-control"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button aria-label="update" type="button" (click)="modifyTest()" class="btn btn-primary">Modifier</button>
+              <button aria-label="reset" type="button" (click)="onReset()" class="btn btn-danger"
+                data-dismiss="modal">Annuler</button>
+            </div>
+          </div>
+        </ng-template>
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>

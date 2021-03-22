@@ -1,0 +1,360 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+  <div id="content-wrapper " class="d-flex flex-column"
+    style="background-color: #f8f9fc; width: 100%; overflow-x: hidden">
+    <div id="content">
+      <!-- topbar -->
+      <nav class="topbar shadow navbar-expand navbar navbar-light bg-white mb-4 static-tp">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link dropdown" (click)='logoutUser()'>
+              <span class="mr-2 d-none d-lg-inline">
+                LOGOUT
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Page content  -->
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-start mb-4">
+          <button aria-label="navigate" (click)='navigateToPatient()' class="title">
+            <i class="fas fa-chevron-left arrow"></i>
+            Détails du patient
+          </button>
+        </div>
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold">Formulaire du patient</h6>
+          </div>
+          <div class="card-body" *ngIf="!patients">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="nom">Nom </label>
+                  <input id="nom" type="text" class="form-control" name="nom" [(ngModel)]="patient.nom" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="prenom">Prénom </label>
+                  <input id="prenom" type="text" class="form-control" name="prenom" [(ngModel)]="patient.prenom" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="datedenaissance" for="lastname">Date de naissance</label>
+                  <input id="datedenaissance" type="date" class="form-control" name="datedenaissance"
+                    [(ngModel)]="patient.datedenaissance" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="matricule">Matricule</label>
+                  <input id="matricule" type="number" class="form-control" name="matricule"
+                    [(ngModel)]="patient.matricule" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="groupesanguin">Groupe sanguin</label>
+                  <input id="groupesanguin" type="text" class="form-control" name="groupesanguin"
+                    [(ngModel)]="patient.groupesanguin" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="streetaddress">Phénotype</label>
+                  <input type="text" class="form-control" name="phenotype" [(ngModel)]="patient.phenotype" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="diagnostic">Diagnostic</label>
+                  <input id="diagnostic" type="text" class="form-control" name="diagnostic"
+                    [(ngModel)]="patient.diagnostic" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="numtransfusion">N° de transfusion</label>
+                  <input id="numtransfusion" type="number" class="form-control" name="numtransfusion"
+                    [(ngModel)]="patient.numtransfusion" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="dernieretransfusion">Dernière transfusion</label>
+                  <input id="dernieretransfusion" type="text" class="form-control" name="dernieretransfusion"
+                    [(ngModel)]="patient.dernieretransfusion" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="tauxdedeglobulisationactuelle">Taux de déglobulisation actuelle</label>
+                  <input id="tauxdedeglobulisationactuelle" type="text" class="form-control"
+                    name="tauxdedeglobulisationactuelle" [(ngModel)]="patient.tauxdedeglobulisationactuelle" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="ancientauxdeglobulisation">Ancien taux de déglobulisation</label>
+                  <input id="ancientauxdeglobulisation" type="text" class="form-control"
+                    name="ancientauxdeglobulisation" [(ngModel)]="patient.ancientauxdeglobulisation" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="derniereferritinemie">Dernière ferritinémie</label>
+                  <input id="derniereferritinemie" type="text" class="form-control" name="derniereferritinemie"
+                    [(ngModel)]="patient.derniereferritinemie" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="ferritinemieactuelle">ferritinémie actuelle</label>
+                  <input id="ferritinemieactuelle" type="text" class="form-control" name="ferritinemieactuelle"
+                    [(ngModel)]="patient.ferritinemieactuelle" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="traitement">Traitement en cours</label>
+                  <input id="traitement" type="text" class="form-control" name="traitement"
+                    [(ngModel)]="patient.traitement" />
+                </div>
+              </div>
+            </div>
+            <div class="buttonSave mb-3 mt-3">
+              <button aria-label="save" (click)="add()" class="save-btn btn-primary">Save</button>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="patients ">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Nom et Prénom</label>
+                  <p>{{patients?.nom}} {{patients?.prenom}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="lastname">Date de naissance</label>
+                  <p>{{patients?.datedenaissance}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="country">Matricule</label>
+                  <p>{{patients?.matricule}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="streetaddress">Groupe sanguin</label>
+                  <p>{{patients?.groupesanguin}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="streetaddress">Phénotype</label>
+                  <p>{{patients?.phenotype}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="Town">Diagnostic</label>
+                  <p>{{patients?.diagnostic}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="zip">N° de transfusion</label>
+                  <p>{{patients?.numtransfusion}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="phone">Dernière transfusion</label>
+                  <p>{{patients?.dernieretransfusion}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email">Taux de déglobulisation actuelle</label>
+                  <p>{{patients?.tauxdedeglobulisationactuelle}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email">Ancien taux de déglobulisation</label>
+                  <p>{{patients?.ancientauxdeglobulisation}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="email">Dernière ferritinémie</label>
+                  <p>{{patients?.derniereferritinemie}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="Town">ferritinémie actuelle</label>
+                  <p>{{patients?.ferritinemieactuelle}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="Town">Traitement en cours</label>
+                  <p>{{patients?.traitement}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="icons mt-4 text-center">
+              <button aria-label="delete" (click)='deletePatient(patients._id)' type="button" aria-label="delete"
+                class="btn btn-outline-danger mr-3"><i class="fas fa-trash-restore"></i></button>
+              <button aria-label="update" (click)='openModal(modify)' type="button" aria-label="update"
+                class="btn btn-outline-primary"><i class="fas fa-user-edit"></i></button>
+            </div>
+          </div>
+        </div>
+        <!-- modal -->
+        <ng-template #modify>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="title" id="defaultModalLabel">Modifier </h4>
+            </div>
+            <div class="modal-body">
+              <form *ngIf="patients">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Nom </label>
+                      <input type="text" class="form-control" name="nom" [(ngModel)]="patients.nom" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Prénom </label>
+                      <input type="text" class="form-control" name="prenom" [(ngModel)]="patients.prenom" />
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="lastname">Date de naissance</label>
+                      <input type="date" class="form-control" name="datedenaissance"
+                        [(ngModel)]="patients.datedenaissance" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="country">Matricule</label>
+                      <input type="number" class="form-control" name="matricule" [(ngModel)]="patients.matricule" />
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="streetaddress">Groupe sanguin</label>
+                      <input type="text" class="form-control" name="groupesanguin"
+                        [(ngModel)]="patients.groupesanguin" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="streetaddress">Phénotype</label>
+                      <input type="text" class="form-control" name="phenotype" [(ngModel)]="patients.phenotype" />
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="Town">Diagnostic</label>
+                      <input type="text" class="form-control" name="diagnostic" [(ngModel)]="patients.diagnostic" />
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="zip">N° de transfusion</label>
+                      <input type="number" class="form-control" name="numtransfusion"
+                        [(ngModel)]="patients.numtransfusion" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="phone">Dernière transfusion</label>
+                      <input type="text" class="form-control" name="dernieretransfusion"
+                        [(ngModel)]="patients.dernieretransfusion" />
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email">Taux de déglobulisation actuelle</label>
+                      <input type="text" class="form-control" name="tauxdedeglobulisationactuelle"
+                        [(ngModel)]="patients.tauxdedeglobulisationactuelle" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email">Ancien taux de déglobulisation</label>
+                      <input type="text" class="form-control" name="ancientauxdeglobulisation"
+                        [(ngModel)]="patients.ancientauxdeglobulisation" />
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="email">Dernière ferritinémie</label>
+                      <input type="text" class="form-control" name="derniereferritinemie"
+                        [(ngModel)]="patients.derniereferritinemie" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="Town">ferritinémie actuelle</label>
+                      <input type="text" class="form-control" name="ferritinemieactuelle"
+                        [(ngModel)]="patients.ferritinemieactuelle" />
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="Town">Traitement en cours</label>
+                      <input type="text" class="form-control" name="traitement" [(ngModel)]="patients.traitement" />
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button aria-label="update" type="button" (click)='modifyPatient()'
+                    class="btn btn-primary">Modifier</button>
+                  <button aria-label="reset" type="button" (click)="onReset()" class="btn btn-danger"
+                    data-dismiss="modal">Annuler</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </ng-template>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+#wrapper {
+  display: flex;
+}
+#content-wrapper {
+  background-color: #f8f9fc;
+  width: 100%;
+  overflow-x: hidden;
+}
+#content {
+  flex: 1 0 auto;
+}
+.topbar {
+  height: 4.3rem;
+}
+.navbar-search {
+  width: 25rem;
+}
+.topbar .navbar-search input {
+  font-size: 0.85rem;
+  height: auto;
+}
+.navbar-nav {
+  margin-top: 0;
+}
+.dropdown .nav-item .nav-link {
+  height: 3.375rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  position: relative;
+}
+.nav-link .img-profile {
+  height: 2.5rem;
+  width: 3rem;
+}
+.nav-link span {
+  font-size: 15px;
+  font-weight: 700;
+}
+.dropdown .dropdown-menu {
+  width: auto;
+  right: 0;
+}
+.dropdown-item {
+  font-size: 14px;
+  color: #636669;
+}
+.dropdown-menu .text-gray-400 {
+  color: #d1d3e2;
+}
+.container-fluid {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.card-body {
+  padding: 1rem 3rem;
+}
+.form-group {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+label {
+  font-size: 15px;
+  color: black;
+  text-transform: none;
+  font-weight: 700;
+}
+.buttonSave {
+  text-align: end;
+}
+.save-btn {
+  background-color: #00a4ccff;
+  border: 2px solid #00a4ccff;
+  color: #040404;
+  border-radius: 20px;
+  padding: 10px 47px;
+  letter-spacing: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.save-btn:hover {
+  background-color: transparent;
+  border: 2px solid#00a4ccff;
+  color: #040404;
+}

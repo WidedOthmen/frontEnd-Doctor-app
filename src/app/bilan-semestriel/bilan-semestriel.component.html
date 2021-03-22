@@ -1,0 +1,347 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <!-- topbar -->
+      <nav class="shadow topbar mb-4 bg-white static-tp navbar-expand navbar navbar-light">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link dropdown" (click)='logoutUser()'>
+              <span class="mr-2 d-none d-lg-inline">
+                LOGOUT
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Page content  -->
+      <div class="container-fluid ">
+        <div class="d-sm-flex align-items-center justify-content-start mb-4">
+          <button aria-label="navigate" (click)='navigateToPatient()' class="title">
+            <i class="fas fa-chevron-left arrow"></i>
+            Détails du patient
+          </button>
+        </div>
+        <div class="card shadow mb-4 ">
+          <div class="card-header py-3 ">
+            <h6 class="m-0 font-weight-bold ">BILAN SEMESTRIEL</h6>
+          </div>
+          <div class="card-body" *ngIf="results">
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table  dataTable" id="dataTable" aria-describedby="dataTable_info"
+                  style="width: 100%; border-right-width: 0; border: 1px solid #e3e6f0;">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-sort="ascending" aria-label="Name: activate to sort column descending">
+                        Date
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        (S1)
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        (S2)
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Observations
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr role="row">
+                      <td>Glycémie HO(mmoI/I)</td>
+                      <td>{{results.glyHos1}}</td>
+                      <td>{{results.glyHos2}} </td>
+                      <td>{{results.glyHoObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>Glycémie H2²(mmoI/I)</td>
+                      <td>{{results.glyH2s1}}</td>
+                      <td>{{results.glyH2s2}} </td>
+                      <td>{{results.glyH2Observ}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>Calcémie(mmoI/I)</td>
+                      <td>{{results.calcemieS1}}</td>
+                      <td>{{results.calcemieS2}} </td>
+                      <td>{{results.calcemieObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>Phosphorémie(mmoI/I)</td>
+                      <td>{{results.phosphS1}}</td>
+                      <td>{{results.phosphS2}} </td>
+                      <td>{{results.phosphObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>Ph.Alcalines(U/I)</td>
+                      <td>{{results.phAlS1}}</td>
+                      <td>{{results.phAlS2}} </td>
+                      <td>{{results.phAlObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>Magnésiémie</td>
+                      <td>{{results.magS1}}</td>
+                      <td>{{results.magS2}} </td>
+                      <td>{{results.magObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>TCD</td>
+                      <td>{{results.tcdS1}}</td>
+                      <td>{{results.tcdS2}} </td>
+                      <td>{{results.tcdObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>Ag HBS</td>
+                      <td>{{results.agHbsS1}}</td>
+                      <td>{{results.agHbsS2}} </td>
+                      <td>{{results.agHbsObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>Sérologie HCV</td>
+                      <td>{{results.hcvS1}}</td>
+                      <td>{{results.hcvS2}} </td>
+                      <td>{{results.hcvObserv}}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>Sérologie HIV</td>
+                      <td>{{results.hivS1}}</td>
+                      <td>{{results.hivS2}} </td>
+                      <td>{{results.hivObserv}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="icons mt-4 text-center">
+              <button aria-label="delete" (click)="delete(results._id)" type="button"
+                class="btn btn-outline-danger mr-3"><i class="fas fa-trash-restore"></i></button>
+              <button aria-label="update" (click)="openModal(modify)" type="button" class="btn btn-outline-primary"><i
+                  class="fas fa-user-edit"></i></button>
+            </div>
+          </div>
+          <ng-template #modify>
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="title" id="defaultModalLabel">Modifier </h4>
+              </div>
+              <div class="modal-body">
+                <form *ngIf="results">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Glycémie HO(mmoI/I) S1</label>
+                        <input type="text" class="form-control" name="glyHos1" [(ngModel)]="results.glyHos1" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Glycémie HO(mmoI/I) S2</label>
+                        <input type="text" class="form-control" name=" glyHos2" [(ngModel)]="results.glyHos2" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name="glyHoObserv" [(ngModel)]="results.glyHoObserv" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Glycémie H2²(mmoI/I) S1</label>
+                        <input type="text" class="form-control" name=" glyH2s1" [(ngModel)]="results.glyH2s1" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Glycémie H2²(mmoI/I) S2</label>
+                        <input type="text" class="form-control" name="glyH2s2" [(ngModel)]="results.glyH2s2" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Observations </label>
+                        <input type="text" class="form-control" name="glyH2Observ" [(ngModel)]="results.glyH2Observ" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Calcémie(mmoI/I) S1</label>
+                        <input type="text" class="form-control" name=" calcemieS1" [(ngModel)]="results.calcemieS1" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Calcémie(mmoI/I) S2</label>
+                        <input type="text" class="form-control" name="calcemieS2" [(ngModel)]="results.calcemieS2" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name="calcemieObserv"
+                          [(ngModel)]="results.calcemieObserv" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Phosphorémie(mmoI/I) S1</label>
+                        <input type="text" class="form-control" name=" phosphS1" [(ngModel)]="results.phosphS1" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Phosphorémie(mmoI/I) S2</label>
+                        <input type="text" class="form-control" name="phosphS2" [(ngModel)]="results.phosphS2" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name="phosphObserv"
+                          [(ngModel)]="results.phosphObserv" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Ph.Alcalines(U/I) S1</label>
+                        <input type="text" class="form-control" name="phAlS1" [(ngModel)]="results.phAlS1" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Ph.Alcalines(U/I) S2</label>
+                        <input type="text" class="form-control" name="phAlS2" [(ngModel)]="results.phAlS2" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name=" phAlObserv" [(ngModel)]="results. phAlObserv" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Magnésiémie S1</label>
+                        <input type="text" class="form-control" name="magS1" [(ngModel)]="results.magS1" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Magnésiémie S2</label>
+                        <input type="text" class="form-control" name="magS2" [(ngModel)]="results.magS2" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name="magObserv" [(ngModel)]="results.magObserv" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>TCD S1</label>
+                        <input type="text" class="form-control" name="tcdS1" [(ngModel)]="results.tcdS1" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>TCD S2</label>
+                        <input type="text" class="form-control" name=" tcdS2" [(ngModel)]="results.tcdS2" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name="tcdObserv" [(ngModel)]="results. tcdObserv" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Ag HBS S1</label>
+                        <input type="text" class="form-control" name="agHbsS1" [(ngModel)]="results.agHbsS1" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Ag HBSj S2</label>
+                        <input type="text" class="form-control" name="agHbsS2" [(ngModel)]="results.agHbsS2" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name="agHbsObserv" [(ngModel)]="results. agHbsObserv" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Sérologie HCV S1</label>
+                        <input type="text" class="form-control" name=" hcvS1" [(ngModel)]="results.hcvS1" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Sérologie HCV S2</label>
+                        <input type="text" class="form-control" name=" hcvS2" [(ngModel)]="results.hcvS2" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name="hcvObserv" [(ngModel)]="results.hcvObserv" />
+                      </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Sérologie HIV S1</label>
+                        <input type="text" class="form-control" name="hivS1" [(ngModel)]="results.hivS1" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Sérologie HIV S2</label>
+                        <input type="text" class="form-control" name=" hivS2" [(ngModel)]="results.hivS2" />
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Observations</label>
+                        <input type="text" class="form-control" name="hivObserv" [(ngModel)]="results.hivObserv" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button aria-label="update" type="button" (click)='modifyResults()'
+                  class="btn btn-primary">Modifier</button>
+                <button aria-label="reset" type="button" (click)="onReset()" class="btn btn-danger"
+                  data-dismiss="modal">Annuler</button>
+              </div>
+            </div>
+          </ng-template>
+          <div class="card-body" *ngIf="!results">
+            <app-formulaire-semestriel></app-formulaire-semestriel>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- footer -->
+    <app-footer></app-footer>
+  </div>
+</div>

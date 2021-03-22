@@ -1,0 +1,352 @@
+<div class="card-body">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="croissance">Croissance staturale(DS)</label>
+        <input id="croissance" type="text" class="form-control" name="croissanceStaturaleResul"
+          [(ngModel)]="bilanAnnuel.croissanceStaturaleResul" placeholder="résultat..." />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observCroissance">Observations</label>
+        <input id="observCroissance" type="text" class="form-control" name=" croissanceStaturaleObserv"
+          [(ngModel)]="bilanAnnuel.croissanceStaturaleObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="Stade">Stade pubertaire(PRADER)s</label>
+        <input id="Stade" type="text" class="form-control" name="stadePubertaireResult"
+          [(ngModel)]="bilanAnnuel.stadePubertaireResult" placeholder="résultat..." />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observStade">Observations</label>
+        <input id="observStade" type="text" class="form-control" name=" stadePubertaireObserv"
+          [(ngModel)]="bilanAnnuel.stadePubertaireObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="Volume">Volume du foie(en cm du RCD)</label>
+        <input id="Volume" type="text" placeholder="résultat..." class="form-control" name="volumeFoieResult"
+          [(ngModel)]="bilanAnnuel.volumeFoieResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observVolume">Observations </label>
+        <input id="observVolume" type="text" class="form-control" name="volumeFoieObserv"
+          [(ngModel)]="bilanAnnuel.volumeFoieObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="VolumeRate">Volume de la rate(en cm du RCG)</label>
+        <input id="VolumeRate" type="text" placeholder="résultat..." class="form-control" name=" volumeRateResult"
+          [(ngModel)]="bilanAnnuel.volumeRateResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observVolumeRate">Observations</label>
+        <input id="observVolumeRate" type="text" class="form-control" placeholder="observation..."
+          name="volumeRateObserv" [(ngModel)]="bilanAnnuel.volumeRateObserv" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="NTR">Nombre de transfusion reçues</label>
+        <input id="NTR" type="text" placeholder="résultat..." class="form-control" name="nbTransfussionRecuesResult"
+          [(ngModel)]="bilanAnnuel.nbTransfussionRecuesResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observNTR">Observations</label>
+        <input id="observNTR" type="text" class="form-control" name=" nbTransfussionRecuesObserv"
+          [(ngModel)]="bilanAnnuel.nbTransfussionRecuesObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="CSA">Consommation sanguine annuelle(ml/Kg)</label>
+        <input id="CSA" type="text" class="form-control" placeholder="résultat..." name="consommationSangAnnuellResult"
+          [(ngModel)]="bilanAnnuel.consommationSangAnnuellResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observCSA">Observations</label>
+        <input id="observCSA" type="text" class="form-control" name="consommationSangAnnuellObserv"
+          [(ngModel)]="bilanAnnuel.consommationSangAnnuellObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="HB">Hb moyenne prè-transfusionnelle(g/dl)</label>
+        <input id="HB" type="text" placeholder="résultat..." class="form-control" name="hbMoyPreTransfResult"
+          [(ngModel)]="bilanAnnuel.hbMoyPreTransfResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observHB">Observations</label>
+        <input id="observHB" type="text" class="form-control" name="hbMoyPreTransfObserv"
+          [(ngModel)]="bilanAnnuel.hbMoyPreTransfObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="HBM">Hb moyenne post-transfusionnelle(g/dl)</label>
+        <input id="HBM" type="text" placeholder="résultat..." class="form-control" name=" hbMoyPostTransfResult"
+          [(ngModel)]="bilanAnnuel. hbMoyPostTransfResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observHBM">Observations</label>
+        <input id="observHBM" type="text" class="form-control" name="hbMoyPostTransfObserv"
+          [(ngModel)]="bilanAnnuel.hbMoyPostTransfObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="FER">Apport de fer(mg/kg/j)</label>
+        <input id="FER" type="text" placeholder="résultat..." class="form-control" name="apportFerResult"
+          [(ngModel)]="bilanAnnuel.apportFerResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observFER">Observations</label>
+        <input id="observFER" type="text" class="form-control" placeholder="observation..." name="apportFerObserv"
+          [(ngModel)]="bilanAnnuel.apportFerObserv" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="FERA">Apport annuel de fer(g/an)</label>
+        <input id="FERA" type="text" placeholder="résultat..." class="form-control" name="apportAnnuelFerResult"
+          [(ngModel)]="bilanAnnuel.apportAnnuelFerResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observFERA">Observations</label>
+        <input id="observFERA" type="text" class="form-control" name=" apportAnnuelFerObserv"
+          [(ngModel)]="bilanAnnuel.apportAnnuelFerObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observTraitementChelateurFerResul">observance du traitement chélateur de fer(%)</label>
+        <input id="observTraitementChelateurFerResul" type="text" placeholder="résultat..." class="form-control"
+          name="observTraitementChelateurFerResult" [(ngModel)]="bilanAnnuel.observTraitementChelateurFerResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observTraitementChelateurFerObserv">Observations</label>
+        <input id="observTraitementChelateurFerObserv" type="text" class="form-control"
+          name="observTraitementChelateurFerObserv" [(ngModel)]="bilanAnnuel.observTraitementChelateurFerObserv"
+          placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="tshResult">TSH(age > 10 ans)</label>
+        <input id="tshResult" type="text" placeholder="résultat..." class="form-control" name="tshResult"
+          [(ngModel)]="bilanAnnuel.tshResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="tshObserv">Observations</label>
+        <input id="tshObserv" type="text" class="form-control" placeholder="observation..." name="tshObserv"
+          [(ngModel)]="bilanAnnuel. tshObserv" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="ft4Result">FT4(age > 10 ans)</label>
+        <input id="ft4Result" type="text" placeholder="résultat..." class="form-control" name="ft4Result"
+          [(ngModel)]="bilanAnnuel.ft4Result" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="ft4Observ">Observations</label>
+        <input id="ft4Observ" type="text" class="form-control" placeholder="observation..." name="ft4Observ"
+          [(ngModel)]="bilanAnnuel.ft4Observ" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="audiogrammeResult">Audiogramme(Malades sous Desfèral*)</label>
+        <input id="audiogrammeResult" type="text" placeholder="résultat..." class="form-control"
+          name="audiogrammeResult" [(ngModel)]="bilanAnnuel.audiogrammeResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="audiogrammeObserv">Observations</label>
+        <input id="audiogrammeObserv" type="text" class="form-control" placeholder="observation..."
+          name="audiogrammeObserv" [(ngModel)]="bilanAnnuel.audiogrammeObserv" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="examOphtaResult">Examen pohtalmologique(AV,FO,vision couleurs) (Malades sous Desfèral*)</label>
+        <input id="examOphtaResult" type="text" placeholder="résultat..." class="form-control" name=" examOphtaResult"
+          [(ngModel)]="bilanAnnuel.examOphtaResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="examOphtaObserv">Observations</label>
+        <input id="examOphtaObserv" type="text" class="form-control" placeholder="observation..." name="examOphtaObserv"
+          [(ngModel)]="bilanAnnuel.examOphtaObserv" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="ageOsseuxResult">Age osseux</label>
+        <input id="ageOsseuxResult" type="text" placeholder="résultat..." class="form-control" name=" ageOsseuxResult"
+          [(ngModel)]="bilanAnnuel.ageOsseuxResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="ageOsseuxObserv">Observations</label>
+        <input id="ageOsseuxObserv" type="text" class="form-control" placeholder="observation..." name="ageOsseuxObserv"
+          [(ngModel)]="bilanAnnuel.ageOsseuxObserv" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="ecgResult">ECG</label>
+        <input id="ecgResult" type="text" placeholder="résultat..." class="form-control" name=" ecgResult"
+          [(ngModel)]="bilanAnnuel.ecgResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="ecgObserv">Observations</label>
+        <input id="ecgObserv" type="text" class="form-control" placeholder="observation..." name="ecgObserv"
+          [(ngModel)]="bilanAnnuel.ecgObserv" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="rxThoraxResult">Rx thorax</label>
+        <input id="rxThoraxResult" type="text" placeholder="résultat..." class="form-control" name=" rxThoraxResult"
+          [(ngModel)]="bilanAnnuel.rxThoraxResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="rxThoraxObserv">Observations</label>
+        <input id="rxThoraxObserv" type="text" class="form-control" placeholder="observation..." name="rxThoraxObserv"
+          [(ngModel)]="bilanAnnuel.rxThoraxObserv" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="echoDoppierCardiaqueResult">Echographie Doppler Cardiaque</label>
+        <input id="echoDoppierCardiaqueResult" type="text" placeholder="résultat..." class="form-control"
+          name=" echoDoppierCardiaqueResult" [(ngModel)]="bilanAnnuel.echoDoppierCardiaqueResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="echoDoppierCardiaqueObserv">Observations</label>
+        <input id="echoDoppierCardiaqueObserv" type="text" class="form-control" name="echoDoppierCardiaqueObserv"
+          [(ngModel)]="bilanAnnuel.echoDoppierCardiaqueObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="echoAbdominaleResult">Echographie abdominale(lithiase biliaire)</label>
+        <input id="echoAbdominaleResult" type="text" placeholder="résultat..." class="form-control"
+          name=" echoAbdominaleResult" [(ngModel)]="bilanAnnuel.echoAbdominaleResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="echoAbdominaleObserv">Observations</label>
+        <input id="echoAbdominaleObserv" type="text" class="form-control" name="echoAbdominaleObserv"
+          [(ngModel)]="bilanAnnuel.echoAbdominaleObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="irmCardiaqueResult">IRM cardiaque(T2°)</label>
+        <input id="irmCardiaqueResult" type="text" placeholder="résultat..." class="form-control"
+          name=" irmCardiaqueResult" [(ngModel)]="bilanAnnuel.irmCardiaqueResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="irmCardiaqueObserv">Observations</label>
+        <input id="irmCardiaqueObserv" type="text" class="form-control" name="irmCardiaqueObserv"
+          [(ngModel)]="bilanAnnuel.irmCardiaqueObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="irmHepatiqueResult">IRM Hépatique(Concentration du fer: mg/gfole sec)</label>
+        <input id="irmHepatiqueResult" type="text" placeholder="résultat..." class="form-control"
+          name=" irmHepatiqueResult" [(ngModel)]="bilanAnnuel.irmHepatiqueResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="irmHepatiqueObserv">Observations</label>
+        <input id="irmHepatiqueObserv" type="text" class="form-control" name="irmHepatiqueObserv"
+          [(ngModel)]="bilanAnnuel.irmHepatiqueObserv" placeholder="observation..." />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="autreExamResult">Autres Examens</label>
+        <input id="autreExamResult" type="text" placeholder="résultat..." class="form-control" name=" autreExamResult"
+          [(ngModel)]="bilanAnnuel.autreExamResult" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="autreExamObserv">Observations</label>
+        <input id="autreExamObserv" type="text" placeholder="observation..." class="form-control" name="autreExamObserv"
+          [(ngModel)]="bilanAnnuel.autreExamObserv" />
+      </div>
+    </div>
+  </div>
+  <div class="buttonSave mb-3 mt-3">
+    <button aria-label="save" (click)="add()" class="save-btn btn-primary">Ajouter</button>
+  </div>
+</div>

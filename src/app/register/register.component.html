@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="login">
+    <div class="block">
+      <div class="header">
+        <i class="fas fa-users"></i>
+      </div>
+      <form [formGroup]="registerForm" (ngSubmit)='register()'>
+        <div class="content">
+          <input type="text" class="form-control" formControlName="name" placeholder="Entrez le nom..."
+            [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+            <div *ngIf="f.name.errors.name">Name must be a valid name s</div>
+          </div>
+          <i class="fas fa-user fontawsom "></i>
+        </div>
+        <div class="content">
+          <input type="email" class="form-control" formControlName="email" placeholder="Adresse e-mail"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
+          <i class="fas fa-at fontawsom"></i>
+        </div>
+        <div class="content">
+          <input type="password" class="form-control" formControlName="password" placeholder="*************"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">password is required</div>
+            <div *ngIf="f.password.errors.password">password must be at least 6 charcters</div>
+          </div>
+          <i class="fas fa-key fontawsom"></i>
+        </div>
+        <div class="content">
+          <input type="password" class="form-control" formControlName="confirmPassword"
+            placeholder="Confirmez mot de Passe" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+          <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+            <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+          </div>
+          <i class="fas fa-key fontawsom"></i>
+        </div>
+        <div class="content">
+          <select name="role" formControlName="role" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+            <option value="doctor">médecin</option>
+            <option value="secretary">secrétaire</option>
+          </select>
+          <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+            <div *ngIf="f.role.errors.required">Confirm Password is required</div>
+            <div *ngIf="f.role.errors.role">Passwords must match</div>
+          </div>
+          <i class="fas fa-user-tag fontawsom"></i>
+        </div>
+        <div class="btnn">
+          <button>REGISTER</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+  <div id="content-wrapper " class="d-flex flex-column ">
+    <div id="content">
+      <!-- topbar -->
+      <nav class="shadow topbar mb-4 bg-white static-tp navbar-expand navbar navbar-light">
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-0 mw-100 navbar-search">
+          <div class="input-group">
+            <input type="text" name="search" class="form-control bg-light border-0 small" placeholder="Search for ..."
+              aria-describedby="basic-addon2" [(ngModel)]="term" />
+            <div class="input-group-append">
+              <button aria-label="search" class="btn btn-primary" type="button">
+                <i class="fas fa-search fa-sm"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link dropdown" (click)='logoutUser()'>
+              <span class="mr-2 d-none d-lg-inline">
+                LOGOUT
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Page content  -->
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-end mb-4">
+          <button class="formulaireBtn" aria-label="open" (click)='navigateToformulaire()'>
+            <i class="fas fa-user-plus"></i>
+          </button>
+        </div>
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold">Les données</h6>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive mt-3">
+              <div class="dataTable_wrapper" id="dataTable_wrapper">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <table class="table dataTable" id="dataTable" aria-describedby="dataTable_info" style="
+                      width: 100%;border-right-width:0;border: 1px solid #e3e6f0;">
+                      <thead>
+                        <tr role="row">
+                          <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="Name: activate to sort column descending"
+                            style="padding: 6px">
+                            Nom et Prénom
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Janvier
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Février
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Mars
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Avril
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Mai
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Juin
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Juillet
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Aout
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Septembre
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Octobre
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Novembre
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                            aria-label="Position: activate to sort column ascending">
+                            Décembre
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody style="overflow-x: scroll">
+                        <tr
+                          *ngFor="let patient of patients | filter:term  | paginate: {itemsPerPage:10,currentPage:p};">
+                          <td>{{patient.nom}} {{patient.prenom}}</td>
+                          <td>{{patient.janvier}}</td>
+                          <td>{{patient.fevrier}}</td>
+                          <td>{{patient.mars}}</td>
+                          <td>{{patient.avril}}</td>
+                          <td>{{patient.mai}}</td>
+                          <td>{{patient.juin}}</td>
+                          <td>{{patient.juillet}}</td>
+                          <td>{{patient.aout}}</td>
+                          <td>{{patient.septembre}}</td>
+                          <td>{{patient.octobre}}</td>
+                          <td>{{patient.novembre}}</td>
+                          <td>{{patient.decembre}}</td>
+                          <td><button class="consulter" (click)="navigateToPatientDATA(patient._id)"
+                              aria-label="consulter">Consulter</button>
+                          </td>
+                        </tr>
+                      </tbody>
+
+                    </table>
+
+                  </div>
+                </div>
+
+                <div class="row pt-3 pb-3">
+                  <div class="col-sm-12 pag " style="text-align: center;">
+                    <pagination-controls (pageChange)=" p = $event"></pagination-controls>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <app-footer></app-footer>
+  </div>
+</div>

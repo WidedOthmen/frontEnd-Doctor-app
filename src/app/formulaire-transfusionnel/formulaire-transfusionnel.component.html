@@ -1,0 +1,108 @@
+<div class="card-body">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="date">Date </label>
+        <input id="date" type="date" class="form-control" name="date" [(ngModel)]="tableau.date" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="volumetransfuse">Volume transfusé(ml) </label>
+        <input id="volumetransfuse" type="text" class="form-control" name="volumetransfuse"
+          [(ngModel)]="tableau.volumetransfuse" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="hb">Hb</label>
+        <input id="hb" type="text" class="form-control" name="hb" [(ngModel)]="tableau.hb" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="pnn">PNN</label>
+        <input id="pnn" type="text" class="form-control" name="pnn" [(ngModel)]="tableau.pnn" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="plaquettes">Plaquettes </label>
+        <input id="plaquettes" type="text" class="form-control" name="plaquettes" [(ngModel)]="tableau.plaquettes" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="reliculocytes">Réliculocytes</label>
+        <input id="reliculocytes" type="text" class="form-control" name="reliculocytes"
+          [(ngModel)]="tableau.reliculocytes" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="hbpost">Hb post-transfusionnelle</label>
+        <input id="hbpost" type="text" class="form-control" name="hbpost" [(ngModel)]="tableau.hbpost" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="rai"> RAI</label>
+        <input id="rai" type="text" class="form-control" name="rai" [(ngModel)]="tableau.rai" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="chh">CHH</label>
+        <input id="chh" type="text" class="form-control" name=" chh" [(ngModel)]="tableau.chh" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="ldh"> LDH (U/L)</label>
+        <input id="ldh" type="text" class="form-control" name="ldh" [(ngModel)]="tableau.ldh" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="creatine">Créatinine sérique (µmol/L)</label>
+        <input id="creatine" type="text" class="form-control" name="creatine" [(ngModel)]="tableau.creatine" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="glycemie">Glycémie (mmol/L)</label>
+        <input id="glycemie" type="text" class="form-control" name="glycemie" [(ngModel)]="tableau.glycemie" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="autresexamen"> Autres examen</label>
+        <input id="autresexamen" type="text" class="form-control" name="autresexamen"
+          [(ngModel)]="tableau.autresexamen" />
+      </div>
+    </div>
+    <div class="w-100"></div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="reaction">Réaction transfusionnelle</label>
+        <input id="reaction" type="text" class="form-control" name="reaction" [(ngModel)]="tableau.reaction" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="observations"> Observations</label>
+        <input id="observations" type="text" class="form-control" name="observations"
+          [(ngModel)]="tableau.observations" />
+      </div>
+    </div>
+  </div>
+  <div class="buttonSave mb-3 mt-3">
+    <button aria-label="save" (click)="add()" class="save-btn btn-primary">Ajouter</button>
+  </div>
+</div>

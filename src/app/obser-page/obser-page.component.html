@@ -1,0 +1,516 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <!-- topbar -->
+      <nav class="shadow topbar mb-4 bg-white static-tp navbar-expand navbar navbar-light">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link dropdown" (click)='logoutUser()'>
+              <span class="mr-2 d-none d-lg-inline">
+                LOGOUT
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Page content  -->
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-start mb-4">
+          <button aria-label="navigate" (click)='navigateToPatient()' class="title">
+            <i class="fas fa-chevron-left arrow"></i>
+            Détails du patient
+          </button>
+        </div>
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="font-weight-bold m-0">Prophylaxie anti-infectieuse - Splenectomie </h6>
+          </div>
+          <div class="card-body" *ngIf="prophy">
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table  dataTable" id="dataTable" aria-describedby="dataTable_info"
+                  style="width: 100%; border-right-width: 0; border: 1px solid #e3e6f0;">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" colspan="2" aria-sort="ascending"
+                        aria-label="Name: activate to sort column descending">Dates
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        {{prophy?.datesvaccinS1}}
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        {{prophy?.datesvaccinS2}}
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        {{prophy?.datesvaccinS3}}
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        {{prophy?.datesvaccinS4}}
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        {{prophy?.datesvaccinS5}}
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        {{prophy?.datesvaccinS6}}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr role="row">
+                      <td class="sorting_1">
+                        <p>V<br /></p>
+                        <p>A<br /></p>
+                        <p>C<br /></p>
+                        <p>C<br /></p>
+                        <p>I<br /></p>
+                        <p>N<br /></p>
+                        <p>S<br /></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;<br /></p>
+                        <p>Prieumocoque<br /></p>
+                        <p>Méningocoque<br /></p>
+                        <p>Hoemophilus b<br /></p>
+                        <p>Hépalite B<br /></p>
+                        <p>Autres<br /></p>
+                        <p>&nbsp;<br /></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;<br /></p>
+                        <p>{{prophy?.pneumocoquevaccS1}} <br /></p>
+                        <p>{{prophy?.meningocoquevaccS1}} <br /></p>
+                        <p>{{prophy?.hoemophilusvaccS1}} <br /></p>
+                        <p>{{prophy?.hepatiteS1}} <br /></p>
+                        <p>{{prophy?.autresvaccS1}} <br /></p>
+                        <p>&nbsp;<br /></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;<br /></p>
+                        <p>{{prophy?.pneumocoquevaccS2}} <br /></p>
+                        <p>{{prophy?.meningocoquevaccS2}} <br /></p>
+                        <p>{{prophy?.hoemophilusvaccS2}} <br /></p>
+                        <p>{{prophy?.hepatiteS2}} <br /></p>
+                        <p>{{prophy?.autresvaccS2}} <br /></p>
+                        <p>&nbsp;<br /></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;<br /></p>
+                        <p>{{prophy?.pneumocoquevaccS3}} <br /></p>
+                        <p>{{prophy?.meningocoquevaccS3}} <br /></p>
+                        <p>{{prophy?.hoemophilusvaccS3}} <br /></p>
+                        <p>{{prophy?.hepatiteS3}} <br /></p>
+                        <p>{{prophy?.autresvaccS3}} <br /></p>
+                        <p>&nbsp;<br /></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;<br /></p>
+                        <p>{{prophy?.pneumocoquevaccS4}} <br /></p>
+                        <p>{{prophy?.meningocoquevaccS4}} <br /></p>
+                        <p>{{prophy?.hoemophilusvaccS4}} <br /></p>
+                        <p>{{prophy?.hepatiteS4}} <br /></p>
+                        <p>{{prophy?.autresvaccS4}} <br /></p>
+                        <p>&nbsp;<br /></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;<br /></p>
+                        <p>{{prophy?.pneumocoquevaccS5}} <br /></p>
+                        <p>{{prophy?.meningocoquevaccS5}} <br /></p>
+                        <p>{{prophy?.hoemophilusvaccS5}} <br /></p>
+                        <p>{{prophy?.hepatiteS5}} <br /></p>
+                        <p>{{prophy?.autresvaccS5}} <br /></p>
+                        <p>&nbsp;<br /></p>
+                      </td>
+                      <td>
+                        <p>&nbsp;<br /></p>
+                        <p>{{prophy?.pneumocoquevaccS6}} <br /></p>
+                        <p>{{prophy?.meningocoquevaccS6}} <br /></p>
+                        <p>{{prophy?.hoemophilusvaccS6}} <br /></p>
+                        <p>{{prophy?.hepatiteS6}} <br /></p>
+                        <p>{{prophy?.autresvaccS6}} <br /></p>
+                        <p>&nbsp;<br /></p>
+                      </td>
+
+                    </tr>
+                    <tr role="row ">
+                      <td colspan="2">Antibioprophylaxie <br /> {{prophy?.antibioprophytaxie}} </td>
+                      <td>{{prophy?.date1antibioptophy}}</td>
+                      <td>{{prophy?.date2antibioptophy}}</td>
+                      <td>{{prophy?.date3antibioptophy}}</td>
+                      <td>{{prophy?.date4antibioptophy}}</td>
+                      <td>{{prophy?.date5antibioptophy}}</td>
+                      <td>{{prophy?.date6antibioptophy}}</td>
+                    </tr>
+                    <tr role="row ">
+                      <td colspan="2">Splénectomie </td>
+                      <td colspan="3">Date <br /> {{prophy?.splnectomieDate}}</td>
+                      <td colspan="3">chirugie <br /> {{prophy?.splnectomieChirugie}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card mb-4">
+              <div class="card-header py-3">
+                <h6 class="font-weight-bold m-0">OBSERVATION</h6>
+              </div>
+              <p class="m-4" cols="30" rows="10">{{prophy?.observations}} </p>
+            </div>
+            <div class="icons mt-4 text-center">
+              <button aria-label="delete" (click)="deleteProphylaxie(prophy._id)" type="button" aria-label="delete"
+                class="btn btn-outline-danger mr-3"><i class="fas fa-trash-restore"></i></button>
+              <button aria-label="update" (click)="openModal(modify)" type="button" aria-label="update"
+                class="btn btn-outline-primary"><i class="fas fa-user-edit"></i></button>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="!prophy">
+            <app-observ-formulaire></app-observ-formulaire>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <app-footer></app-footer>
+  </div>
+</div>
+<ng-template #modify>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="title" id="defaultModalLabel">Modifier </h4>
+    </div>
+    <div class="modal-body">
+      <form *ngIf="prophy">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>date S1</label>
+                  <input type="date" class="form-control" name=" datesvaccinS1" [(ngModel)]="prophy.datesvaccinS1" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>date S2</label>
+                  <input type="date" class="form-control" name=" datesvaccinS2" [(ngModel)]="prophy.datesvaccinS2" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>date S3</label>
+                  <input type="date" class="form-control" name=" datesvaccinS3" [(ngModel)]="prophy.datesvaccinS3" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>date S4</label>
+                  <input type="date" class="form-control" name=" datesvaccinS4" [(ngModel)]="prophy.datesvaccinS4" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>date S5</label>
+                  <input type="date" class="form-control" name=" datesvaccinS5" [(ngModel)]="prophy.datesvaccinS5" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>date S6</label>
+                  <input type="date" class="form-control" name=" datesvaccinS6" [(ngModel)]="prophy.datesvaccinS6" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Prieumocoque S1</label>
+                  <input type="text" class="form-control" name=" pneumocoquevaccS1"
+                    [(ngModel)]="prophy.pneumocoquevaccS1" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Prieumocoque S2</label>
+                  <input type="text" class="form-control" name=" pneumocoquevaccS2"
+                    [(ngModel)]="prophy.pneumocoquevaccS2" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Prieumocoque S3</label>
+                  <input type="text" class="form-control" name=" pneumocoquevaccS3"
+                    [(ngModel)]="prophy.pneumocoquevaccS3" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Prieumocoque S4</label>
+                  <input type="text" class="form-control" name=" pneumocoquevaccS4"
+                    [(ngModel)]="prophy.pneumocoquevaccS4" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Prieumocoque S5</label>
+                  <input type="text" class="form-control" name=" pneumocoquevaccS5"
+                    [(ngModel)]="prophy.pneumocoquevaccS5" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Prieumocoque S6</label>
+                  <input type="text" class="form-control" name=" pneumocoquevaccS6"
+                    [(ngModel)]="prophy.pneumocoquevaccS6" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Méningocoque S1</label>
+                  <input type="text" class="form-control" name="meningocoquevaccS1"
+                    [(ngModel)]="prophy.meningocoquevaccS1" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Méningocoque S2</label>
+                  <input type="text" class="form-control" name="meningocoquevaccS2"
+                    [(ngModel)]="prophy.meningocoquevaccS2" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Méningocoque S3</label>
+                  <input type="text" class="form-control" name="meningocoquevaccS3"
+                    [(ngModel)]="prophy.meningocoquevaccS3" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Méningocoque S4</label>
+                  <input type="text" class="form-control" name="meningocoquevaccS4"
+                    [(ngModel)]="prophy.meningocoquevaccS4" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Méningocoque S5</label>
+                  <input type="text" class="form-control" name="meningocoquevaccS5"
+                    [(ngModel)]="prophy.meningocoquevaccS5" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Méningocoque S6</label>
+                  <input type="text" class="form-control" name="meningocoquevaccS6"
+                    [(ngModel)]="prophy.meningocoquevaccS6" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hoemophilus b S1</label>
+                  <input type="text" class="form-control" name="hoemophilusvaccS1"
+                    [(ngModel)]="prophy.hoemophilusvaccS1" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hoemophilus b S2</label>
+                  <input type="text" class="form-control" name="hoemophilusvaccS2"
+                    [(ngModel)]="prophy.hoemophilusvaccS2" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hoemophilus b S3</label>
+                  <input type="text" class="form-control" name="hoemophilusvaccS3"
+                    [(ngModel)]="prophy.hoemophilusvaccS3" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hoemophilus b S4</label>
+                  <input type="text" class="form-control" name="hoemophilusvaccS4"
+                    [(ngModel)]="prophy.hoemophilusvaccS4" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hoemophilus b S5</label>
+                  <input type="text" class="form-control" name="hoemophilusvaccS5"
+                    [(ngModel)]="prophy.hoemophilusvaccS5" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hoemophilus b S6</label>
+                  <input type="text" class="form-control" name="hoemophilusvaccS6"
+                    [(ngModel)]="prophy.hoemophilusvaccS6" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hépalite B S1</label>
+                  <input type="text" class="form-control" name="hepatiteS1" [(ngModel)]="prophy.hepatiteS1" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hépalite B S2</label>
+                  <input type="text" class="form-control" name="hepatiteS2" [(ngModel)]="prophy.hepatiteS2" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hépalite B S3</label>
+                  <input type="text" class="form-control" name="hepatiteS3" [(ngModel)]="prophy.hepatiteS3" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hépalite B S4</label>
+                  <input type="text" class="form-control" name="hepatiteS4" [(ngModel)]="prophy.hepatiteS4" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hépalite B S5</label>
+                  <input type="text" class="form-control" name="hepatiteS5" [(ngModel)]="prophy.hepatiteS5" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hépalite B S6</label>
+                  <input type="text" class="form-control" name="hepatiteS6" [(ngModel)]="prophy.hepatiteS6" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Autres S1</label>
+                  <input type="text" class="form-control" name="autresvaccS1" [(ngModel)]="prophy.autresvaccS1" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Autres S2</label>
+                  <input type="text" class="form-control" name="autresvaccS2" [(ngModel)]="prophy.autresvaccS2" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Autres S3</label>
+                  <input type="text" class="form-control" name="autresvaccS3" [(ngModel)]="prophy.autresvaccS3" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Autres S4</label>
+                  <input type="text" class="form-control" name="autresvaccS4" [(ngModel)]="prophy.autresvaccS4" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Autres S5</label>
+                  <input type="text" class="form-control" name="autresvaccS5" [(ngModel)]="prophy.autresvaccS5" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Autres S6</label>
+                  <input type="text" class="form-control" name="autresvaccS6" [(ngModel)]="prophy.autresvaccS6" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Antibioprophylaxie </label>
+                  <input type="text" class="form-control" name=" antibioprophytaxie"
+                    [(ngModel)]="prophy.antibioprophytaxie" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Antibioprophylaxie S1</label>
+                  <input type="date" class="form-control" name=" date1antibioptophy"
+                    [(ngModel)]="prophy.date1antibioptophy" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Antibioprophylaxie S2</label>
+                  <input type="date" class="form-control" name=" date2antibioptophy"
+                    [(ngModel)]="prophy.date2antibioptophy" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Antibioprophylaxie S3</label>
+                  <input type="date" class="form-control" name=" date3antibioptophy"
+                    [(ngModel)]="prophy.date3antibioptophy" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Antibioprophylaxie S4</label>
+                  <input type="date" class="form-control" name=" date4antibioptophy"
+                    [(ngModel)]="prophy.date4antibioptophy" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Antibioprophylaxie S5</label>
+                  <input type="date" class="form-control" name=" date5antibioptophy"
+                    [(ngModel)]="prophy.date5antibioptophy" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Antibioprophylaxie S6</label>
+                  <input type="date" class="form-control" name=" date6antibioptophy"
+                    [(ngModel)]="prophy.date6antibioptophy" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Splénectomie</label>
+                  <input placeholder="Date.." type="date" class="form-control" name="splnectomieDate"
+                    [(ngModel)]="prophy.splnectomieDate" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Splénectomie</label>
+                  <input placeholder="chirugie.." type="text" class="form-control" name="splnectomieChirugie"
+                    [(ngModel)]="prophy.splnectomieChirugie" />
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>observations</label>
+                  <input type="text" class="form-control" name="observations " [(ngModel)]="prophy.observations" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" (click)='modifyProphylaxie()' class="btn btn-primary">Modifier</button>
+            <button type="button" (click)="onReset()" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+</ng-template>

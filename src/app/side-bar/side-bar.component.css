@@ -1,0 +1,60 @@
+.sidebar {
+  width: 13rem;
+  height: 100vh;
+  /* background-color: #00a4ccff; */
+  background-color: #007bffa1;
+}
+.sidenav{
+  height: 100%;
+  overflow-x: hidden;
+}
+ul .sidebar-brand {
+  height: 4.375rem;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  z-index: 1;
+  color: white;
+}
+.sidebar-icon {
+  font-size: 2rem;
+  line-height: 1.5;
+  color: #003c7b;
+}
+.sidebar-text {
+  font-size: 19px;
+  font-weight: 700;
+  color: #003c7b;
+}
+hr.sidebar-divider {
+  margin: 0 2rem 1rem;
+}
+.nav-item {
+  position: relative;
+  list-style: none;
+}
+ul a {
+  text-decoration: none;
+  background-color: transparent;
+}
+.nav-link {
+  /* color: #fff; */
+  color: #02167a;
+  font-weight: 700;
+  display: block;
+  text-align: left;
+  padding: 1rem;
+  width: 14rem;
+}
+.nav-link i {
+  font-size: 0.89rem;
+  margin-right: 0.5rem;
+}
+.nav-link span {
+  font-size: 0.85rem;
+  display: inline;
+}

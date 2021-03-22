@@ -1,0 +1,314 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+  <div id="content-wrapper " class="d-flex flex-column">
+    <div id="content">
+      <!-- topbar -->
+      <nav class="shadow topbar mb-4 bg-white static-tp navbar-expand navbar navbar-light">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link dropdown" (click)='logoutUser()'>
+              <span class="mr-2 d-none d-lg-inline">
+                LOGOUT
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Page content  -->
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-end mb-4"></div>
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold">Détails du patient</h6>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table dataTable" id="dataTable" aria-describedby="dataTable_info" style="
+                    width: 100%;border-right-width: 0; border: 1px solid #e3e6f0;">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-sort="ascending" aria-label="Name: activate to sort column descending"
+                        style="padding: 6px">
+                        Nom et Prénom
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Janvier
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Février
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Mars
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Avril
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Mai
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Juin
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Juillet
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Aout
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Septembre
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Octobre
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Novembre
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Décembre
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody style="overflow-x: scroll">
+                    <tr role="row">
+                      <td>{{patient?.nom}} {{patient?.prenom}}</td>
+                      <td>{{patient?.janvier}}</td>
+                      <td>{{patient?.fevrier}}</td>
+                      <td>{{patient?.mars}}</td>
+                      <td>{{patient?.avril}}</td>
+                      <td>{{patient?.mai}}</td>
+                      <td>{{patient?.juin}}</td>
+                      <td>{{patient?.juillet}}</td>
+                      <td>{{patient?.aout}}</td>
+                      <td>{{patient?.septembre}}</td>
+                      <td>{{patient?.octobre}}</td>
+                      <td>{{patient?.novembre}}</td>
+                      <td>{{patient?.decembre}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="icons mt-4 text-center">
+              <button (click)="deletPatient(patient._id)" type="button" class="btn btn-outline-danger mr-3"
+                aria-label="delete"><i class="fas fa-trash-restore"></i></button>
+              <button (click)="openModal(modify)" type="button" class="btn btn-outline-primary" aria-label="update"><i
+                  class="fas fa-user-edit"></i></button>
+            </div>
+          </div>
+        </div>
+        <!-- modal -->
+        <ng-template #modify>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="title" id="defaultModalLabel">Modifier </h4>
+            </div>
+            <div class="modal-body">
+              <form *ngIf="patient">
+                <div class="row ">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Nom</label>
+                      <input type="text" class="form-control" name="nom" [(ngModel)]="patient.nom">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Prénom</label>
+                      <input type="text" class="form-control" name="prenom" [(ngModel)]="patient.prenom">
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Janvier</label>
+                      <input type="date" class="form-control" name="janvier" [(ngModel)]="patient.janvier">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Février</label>
+                      <input type="date" class="form-control" name="fevrier" [(ngModel)]="patient.fevrier">
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label> Mars</label>
+                      <input type="date" class="form-control" name=" mars" [(ngModel)]="patient.mars">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Avril</label>
+                      <input type="date" class="form-control" name="avril" [(ngModel)]="patient.avril">
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Mai</label>
+                      <input type="date" class="form-control" name="mai" [(ngModel)]="patient.mai">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Juin</label>
+                      <input type="date" class="form-control" name="juin" [(ngModel)]="patient.juin">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Juillet</label>
+                      <input type="date" class="form-control" name="juillet" [(ngModel)]="patient.juillet">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Aout</label>
+                      <input type="date" class="form-control" name="aout" [(ngModel)]="patient.aout">
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Septembre</label>
+                      <input type="date" class="form-control" name="septembre" [(ngModel)]="patient.septembre">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Octobre</label>
+                      <input type="date" class="form-control" name=" octobre" [(ngModel)]="patient.octobre">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Novembre</label>
+                      <input type="date" class="form-control" name="novembre" [(ngModel)]="patient.novembre">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="lastname">Décembre</label>
+                      <input type="date" class="form-control" name="decembre" [(ngModel)]="patient.decembre">
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button aria-label="update" type="button" (click)='modifyPatient()'
+                    class="btn btn-primary">Modifier</button>
+                  <button aria-label="reset" type="button" (click)="onReset()" class="btn btn-danger"
+                    data-dismiss="modal">Annuler</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </ng-template>
+        <div class="section2 d-flex justify-content-center align-items-center">
+          <div class="container ">
+            <div class="card">
+              <div class="circle">
+                <h2><i class="fas fa-clipboard-list"></i></h2>
+              </div>
+              <div class="content">
+                <p>Formulaire</p>
+                <button (click)="navigateToFormulaire()">Gérer</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="circle">
+                <h2><i class="fas fa-clipboard-list"></i></h2>
+              </div>
+              <div class="content">
+                <p>Famille</p>
+                <button (click)="navigateToFamily()">Gérer</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="circle">
+                <h2><i class="fas fa-clipboard-list"></i></h2>
+              </div>
+              <div class="content">
+                <p>Prophylaxie</p>
+                <button (click)='navigateToProphylaxie()'>Gérer</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="circle">
+                <h2><i class="fas fa-clipboard-list"></i></h2>
+              </div>
+              <div class="content">
+                <p>Examen</p>
+                <button (click)='navigateToExamen()'>Gérer</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="circle">
+                <h2><i class="fas fa-clipboard-list"></i></h2>
+              </div>
+              <div class="content">
+                <p>NFS pré-transfusionnelle</p>
+                <button (click)="navigateToNFS()">Gérer</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="circle">
+                <h2><i class="fas fa-clipboard-list"></i></h2>
+              </div>
+              <div class="content">
+                <p>Tableau transfusionnel </p>
+                <button (click)='navigateToTableauTR()'>Gérer</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="circle">
+                <h2><i class="fas fa-clipboard-list"></i></h2>
+              </div>
+              <div class="content">
+                <p>Bilan trimestriel</p>
+                <button (click)="navigateToBilanTrimestriel()">Gérer</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="circle">
+                <h2><i class="fas fa-clipboard-list"></i></h2>
+              </div>
+              <div class="content">
+                <p>Bilan semestriel</p>
+                <button (click)="navigateToBilanSemestriel()">Gérer</button>
+              </div>
+            </div>
+            <div class="card">
+              <div class="circle">
+                <h2><i class="fas fa-clipboard-list"></i></h2>
+              </div>
+              <div class="content">
+                <p>Bilan annuel</p>
+                <button (click)="navigateToBilanAnnuel()">Gérer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer -->
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

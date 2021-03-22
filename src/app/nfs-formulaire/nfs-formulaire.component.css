@@ -1,0 +1,150 @@
+#wrapper {
+  display: flex;
+}
+#content-wrapper {
+  background-color: #f8f9fc;
+  width: 100%;
+  overflow-x: auto;
+}
+#content {
+  flex: 1 0 auto;
+}
+.topbar {
+  height: 4.3rem;
+}
+.navbar-search {
+  width: 25rem;
+}
+.topbar .navbar-search input {
+  font-size: 0.85rem;
+  height: auto;
+}
+.navbar-nav {
+  margin-top: 0;
+}
+.dropdown .nav-item  {
+  height: 3.375rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  position: relative;
+}
+.nav-item  .img-profile {
+  height: 2.5rem;
+  width: 3rem;
+}
+.nav-item span {
+  font-size: 15px;
+  font-weight: 700;
+  color: #265c8b;
+}
+.container-fluid {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.card-header h6 {
+  color: #be4402;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.card-body {
+  padding: 1rem 3rem;
+}
+.form-group {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 15px;
+  color: black;
+  text-transform: none;
+  font-weight: 700;
+}
+.form-group p {
+  font-size: 18px;
+  font-weight: 600;
+  background: #8080803b;
+  color: #17504b;
+  padding: 12px ;
+}
+.form-control {
+  width: 100%;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 58px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #17504b;
+  font-size: 16px;
+}
+.cart-wrap {
+  background: #f8f9fa;
+  padding: 0 15px;
+}
+.cart-total h3 {
+  line-height: 1.5;
+  font-weight: 400;
+  color: #000000;
+}
+.cart-total p {
+  display: flex;
+}
+.cart-total p span {
+  width: 50%;
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #17504b;
+}
+.cart-total p .price {
+  color: #000000;
+  width: 50%;
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+.cart-detail h3 {
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.cart-detail label {
+  font-family: "Lato", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  font-weight: 400;
+  color: gray;
+}
+.buttonSave {
+  text-align: end;
+}
+.save-btn {
+  background-color: #00a4ccff;
+  border: 2px solid #00a4ccff;
+  color: #040404;
+  border-radius: 20px;
+  padding: 10px 47px;
+  letter-spacing: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.save-btn:hover {
+  background-color: transparent;
+  border: 2px solid#00a4ccff;
+  color: #040404;
+}
+.title{
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  margin: 14px;
+}
+.title .arrow{
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 5px;
+}

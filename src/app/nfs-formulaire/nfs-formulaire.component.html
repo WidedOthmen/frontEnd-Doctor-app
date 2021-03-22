@@ -1,0 +1,467 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+  <div id="content-wrapper " class="d-flex flex-column"
+    style=" background-color: #f8f9fc; width: 100%; overflow-x: hidden;">
+    <div id="content">
+      <!-- topbar -->
+      <nav class="shadow topbar mb-4 bg-white static-tp navbar-expand navbar navbar-light">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link dropdown" (click)='logoutUser()'>
+              <span class="mr-2 d-none d-lg-inline">
+                LOGOUT
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Page content  -->
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-start mb-4">
+          <button aria-label="navigate" (click)='navigateToPatient()' class="title">
+            <i class="fas fa-chevron-left arrow"></i>
+            Détails du patient
+          </button>
+        </div>
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold">NFS Pré-transfusionnelle</h6>
+        </div>
+        <div class="card shadow mb-4">
+          <div class="card-body" *ngIf="!full">
+            <div class="row ">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="hb">Hb(g/dl):</label>
+                  <input id="hb" type="text" class="form-control" name=" hb" [(ngModel)]="nfsPre.hb">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="gb">GB(mm3):</label>
+                  <input id="gb" type="text" class="form-control" name=" gb" [(ngModel)]="nfsPre.gb">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="pnn">PNN(mm3):</label>
+                  <input id="pnn" type="text" class="form-control" name="pnn" [(ngModel)]="nfsPre.pnn">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="lymphocytes">Lymphocytes:</label>
+                  <input id="lymphocytes" type="text" class="form-control" name=" lymphocytes"
+                    [(ngModel)]="nfsPre.lymphocytes">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="plq">Plq(mm3):</label>
+                  <input id="plq" type="text" class="form-control" name="plq" [(ngModel)]="nfsPre.plq">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="retic">Retic(ul):</label>
+                  <input id="retic" type="text" class="form-control" name=" retic" [(ngModel)]="nfsPre.retic">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="rai">RAI:</label>
+                  <input id="rai" type="text" class="form-control" name=" rai" [(ngModel)]="nfsPre.rai">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="tcd">TCD:</label>
+                  <input id="tcd" type="text" class="form-control" name="tcd" [(ngModel)]="nfsPre.tcd">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="avecOuSansIncedents">Avec ou sans incidents:</label>
+                  <input id="avecOuSansIncedents" type="text" class="form-control" name="avecOuSansIncedents"
+                    [(ngModel)]="nfsPre.avecOuSansIncedents">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <span>
+                    Il a reçu <input id="recu" type="text" name="recu" [(ngModel)]="nfsPre.recu" style="width: 27%;font-weight: 500;
+                    border: 1px solid rgba(0, 0, 0, 0.1); color:#2d9990; font-size: 16px; height: 48px;"> cc de CGR
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="buttonSave mb-3 mt-3">
+              <button aria-label="save" (click)='add()' class="save-btn btn-primary ">sauvegarder</button>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="full">
+            <div class="row ">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hb(g/dl):</label>
+                  <p>{{full?.hb}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>GB(mm3):</label>
+                  <p>{{full?.gb}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>PNN(mm3):</label>
+                  <p>{{full?.pnn}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Lymphocytes:</label>
+                  <p>{{full?.lymphocytes}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Plq(mm3):</label>
+                  <p>{{full?.plq}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Retic(ul):</label>
+                  <p>{{full?.retic}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>RAI:</label>
+                  <p>{{full?.rai}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>TCD:</label>
+                  <p>{{full?.tcd}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Avec ou sans incidents:</label>
+                  <p>{{full?.avecOuSansIncedents}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <span>
+                    Il a reçu
+                    <p
+                      style="margin:0; width: 27%;font-weight: 500; border: 1px solid rgba(0, 0, 0, 0.1);color: #17504b; font-size: 16px; height: 48px;">
+                      {{full?.recu}}
+                    </p>
+                    cc de CGR
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="icons mt-4 text-center">
+              <button aria-label="delete" (click)='deleteNfsPre(full._id)' type="button"
+                class="btn btn-outline-danger mr-3"><i class="fas fa-trash-restore"></i></button>
+              <button aria-label="update" (click)='openModal(modify)' type="button" class="btn btn-outline-primary"><i
+                  class="fas fa-user-edit"></i></button>
+            </div>
+          </div>
+        </div>
+        <ng-template #modify>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="title" id="defaultModalLabel">Modifier </h4>
+            </div>
+            <div class="modal-body">
+              <form *ngIf="full">
+                <div class="row ">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Hb(g/dl):</label>
+                      <input type="text" class="form-control" name=" hb" [(ngModel)]="full.hb">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>GB(mm3):</label>
+                      <input type="text" class="form-control" name=" gb" [(ngModel)]="full.gb">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>PNN(mm3):</label>
+                      <input type="text" class="form-control" name="pnn" [(ngModel)]="full.pnn">
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Lymphocytes:</label>
+                      <input type="text" class="form-control" name=" lymphocytes" [(ngModel)]="full.lymphocytes">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Plq(mm3):</label>
+                      <input type="text" class="form-control" name="plq" [(ngModel)]="full.plq">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Retic(ul):</label>
+                      <input type="text" class="form-control" name=" retic" [(ngModel)]="full.retic">
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>RAI:</label>
+                      <input type="text" class="form-control" name=" rai" [(ngModel)]="full.rai">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>TCD:</label>
+                      <input type="text" class="form-control" name="tcd" [(ngModel)]="full.tcd">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Avec ou sans incidents:</label>
+                      <input type="text" class="form-control" name="avecOuSansIncedents"
+                        [(ngModel)]="full.avecOuSansIncedents">
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <span>
+                        Il a reçu <input type="text" name="recu" [(ngModel)]="full.recu" style="width: 27%;font-weight: 500;
+                        border: 1px solid rgba(0, 0, 0, 0.1); color:#2d9990; font-size: 16px; height: 48px;"> cc de CGR
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button aria-label="update" type="button" (click)='modifyNfsPre()'
+                    class="btn btn-primary">Modifier</button>
+                  <button aria-label="reset" type="button" (click)="onReset()" class="btn btn-danger"
+                    data-dismiss="modal">Annuler</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </ng-template>
+
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold">NFS Post-transfusionnelle</h6>
+        </div>
+        <div class="card shadow mb-4">
+          <div class="card-body" *ngIf="!empty">
+            <div class="row ">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="hb2">Hb(g/dl):</label>
+                  <input id="hb2" type="text" class="form-control" name=" hb" [(ngModel)]="nfsPost.hb">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>GB(mm3):</label>
+                  <input type="text" class="form-control" name=" gb" [(ngModel)]="nfsPost.gb">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="pnn2">PNN(mm3):</label>
+                  <input id="pnn2" type="text" class="form-control" name="pnn" [(ngModel)]="nfsPost.pnn">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="lymphocytes2">Lymphocytes:</label>
+                  <input id="lymphocytes2" type="text" class="form-control" name=" lymphocytes"
+                    [(ngModel)]="nfsPost.lymphocytes">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="plq2">Plq(mm3):</label>
+                  <input id="plq2" type="text" class="form-control" name="plq" [(ngModel)]="nfsPost.plq">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="retic2">Retic(ul):</label>
+                  <input id="retic2" type="text" class="form-control" name=" retic" [(ngModel)]="nfsPost.retic">
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="rai2">RAI:</label>
+                  <input id="rai2" type="text" class="form-control" name=" rai" [(ngModel)]="nfsPost.rai">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="tcd2">TCD:</label>
+                  <input id="tcd2" type="text" class="form-control" name="tcd" [(ngModel)]="nfsPost.tcd">
+                </div>
+              </div>
+            </div>
+            <div class="buttonSave mb-3 mt-3">
+              <button aria-label="save" (click)='addPost()' class="save-btn btn-primary ">sauvegarder</button>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="empty">
+            <div class="row ">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Hb(g/dl):</label>
+                  <p>{{empty?.hb}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>GB(mm3):</label>
+                  <p>{{empty?.gb}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>PNN(mm3):</label>
+                  <p>{{empty?.pnn}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Lymphocytes:</label>
+                  <p>{{empty?.lymphocytes}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Plq(mm3):</label>
+                  <p>{{empty?.plq}}</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Retic(ul):</label>
+                  <p>{{empty?.retic}}</p>
+                </div>
+              </div>
+              <div class="w-100"></div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>RAI:</label>
+                  <p>{{empty?.rai}}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>TCD:</label>
+                  <p>{{empty?.tcd}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="icons mt-4 text-center">
+              <button aria-label="delete" (click)='deleteNfsPost(empty._id)' type="button"
+                class="btn btn-outline-danger mr-3"><i class="fas fa-trash-restore"></i></button>
+              <button aria-label="update" (click)='openModalPost(modifier)' type="button"
+                class="btn btn-outline-primary"><i class="fas fa-user-edit"></i></button>
+            </div>
+          </div>
+        </div>
+        <ng-template #modifier>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="title" id="defaultModalLabel">Modifier </h4>
+            </div>
+            <div class="modal-body">
+              <form *ngIf="empty">
+                <div class="row ">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Hb(g/dl):</label>
+                      <input type="text" class="form-control" name=" hb" [(ngModel)]="empty.hb">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>GB(mm3):</label>
+                      <input type="text" class="form-control" name=" gb" [(ngModel)]="empty.gb">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>PNN(mm3):</label>
+                      <input type="text" class="form-control" name="pnn" [(ngModel)]="empty.pnn">
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Lymphocytes:</label>
+                      <input type="text" class="form-control" name=" lymphocytes" [(ngModel)]="empty.lymphocytes">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Plq(mm3):</label>
+                      <input type="text" class="form-control" name="plq" [(ngModel)]="empty.plq">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Retic(ul):</label>
+                      <input type="text" class="form-control" name=" retic" [(ngModel)]="empty.retic">
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>RAI:</label>
+                      <input type="text" class="form-control" name=" rai" [(ngModel)]="empty.rai">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>TCD:</label>
+                      <input type="text" class="form-control" name="tcd" [(ngModel)]="empty.tcd">
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button aria-label="update" type="button" (click)='modifyNfsPost()'
+                    class="btn btn-primary">Modifier</button>
+                  <button aria-label="reset" type="button" (click)="onReset()" class="btn btn-danger"
+                    data-dismiss="modal">Annuler</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

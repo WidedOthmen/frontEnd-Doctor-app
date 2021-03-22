@@ -1,0 +1,453 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <!-- topbar -->
+      <nav class="shadow topbar mb-4 bg-white static-tp navbar-expand navbar navbar-light">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link dropdown" (click)='logoutUser()'>
+              <span class="mr-2 d-none d-lg-inline">
+                LOGOUT
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Page content  -->
+      <div class="container-fluid">
+        <div class="d-sm-flex align-items-center justify-content-start mb-4">
+          <button aria-label="navigate" (click)='navigateToPatient()' class="title">
+            <i class="fas fa-chevron-left arrow"></i>
+            Détails du patient
+          </button>
+        </div>
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold">Famille</h6>
+          </div>
+          <div class="card-body" *ngIf="family">
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table dataTable" id="dataTable" aria-describedby="dataTable_info" style="
+                    width: 100%;border-right-width: 0; border: 1px solid #e3e6f0;">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-sort="ascending" aria-label="Name: activate to sort column descending"
+                        style="padding: 6px">
+                        Prénom
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        Date de naissance
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="3"
+                        aria-label="Position: activate to sort column ascending">
+                        <span style="margin-right: 7rem; margin-left: 1rem">HbA</span>
+                        <span style="margin-right: 7rem; margin-left:5rem">Hbf</span>
+                        <span style="margin-left: 1rem">HbA²</span>
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"
+                        aria-label="Position: activate to sort column ascending">
+                        HLA
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr role="row">
+                      <td>(Pére):{{ family?.prenomPere }}</td>
+                      <td>{{ family?.datedenaissancePere }}</td>
+                      <td>{{ family?.hbaPere }}</td>
+                      <td>{{ family?.hbfPere }}</td>
+                      <td>{{ family?.hba2Pere }}</td>
+                      <td>{{ family?.hlaPere }}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>(Mére):{{ family?.prenomMere }}</td>
+                      <td>{{ family?.datedenaissanceMere }}</td>
+                      <td>{{ family?.hbaMere }}</td>
+                      <td>{{ family?.hbfMere }}</td>
+                      <td>{{ family?.hba2Mere }}</td>
+                      <td>{{ family?.hlaMere }}</td>
+                    </tr>
+                    <tr role="row">
+                      <td rowspan="5" colspan="1">
+                        (Fratrie):1/{{ family?.prenomFratrie1 }}<br />
+                        <p>2/{{ family?.prenomFratrie2 }}<br /></p>
+                        <p>3/{{ family?.prenomFratrie3 }}<br /></p>
+                        <p>4/{{ family?.prenomFratrie4 }}<br /></p>
+                        <p>5/{{ family?.prenomFratrie5 }}<br /></p>
+                      </td>
+                      <td>{{ family?.datedenaissanceFratrie1 }}</td>
+                      <td>{{ family?.hbaFratrie1 }}</td>
+                      <td>{{ family?.hbfFratrie1 }}</td>
+                      <td>{{ family?.hba2Fratrie1 }}</td>
+                      <td>{{ family?.hlaFratrie1 }}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>{{ family?.datedenaissanceFratrie2 }}</td>
+                      <td>{{ family?.hbaFratrie2 }}</td>
+                      <td>{{ family?.hbfFratrie2 }}</td>
+                      <td>{{ family?.hba2Fratrie2 }}</td>
+                      <td>{{ family?.hlaFratrie2 }}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>{{ family?.datedenaissanceFratrie3 }}</td>
+                      <td>{{ family?.hbaFratrie3 }}</td>
+                      <td>{{ family?.hbfFratrie3 }}</td>
+                      <td>{{ family?.hba2Fratrie3 }}</td>
+                      <td>{{ family?.hlaFratrie3 }}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>{{ family?.datedenaissanceFratrie4 }}</td>
+                      <td>{{ family?.hbaFratrie4 }}</td>
+                      <td>{{ family?.hbfFratrie4 }}</td>
+                      <td>{{ family?.hba2Fratrie4 }}</td>
+                      <td>{{ family?.hlaFratrie4 }}</td>
+                    </tr>
+                    <tr role="row">
+                      <td>{{ family?.datedenaissanceFratrie5 }}</td>
+                      <td>{{ family?.hbaFratrie5 }}</td>
+                      <td>{{ family?.hbfFratrie5 }}</td>
+                      <td>{{ family?.hba2Fratrie5 }}</td>
+                      <td>{{ family?.hlaFratrie5 }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="icons mt-4 text-center">
+              <button (click)="deleteFamily(family._id)" type="button" aria-label="delete"
+                class="btn btn-outline-danger mr-3"><i class="fas fa-trash-restore"></i></button>
+              <button (click)="openModal(modify)" type="button" aria-label="update" class="btn btn-outline-primary"><i
+                  class="fas fa-user-edit"></i></button>
+            </div>
+          </div>
+          <ng-template #modify>
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="title" id="defaultModalLabel">Modifier </h4>
+              </div>
+              <div class="modal-body">
+                <form *ngIf="family">
+                  <div class="card mb-4">
+                    <div class="card-body">
+
+                      <div>
+                        <div class="form-group">
+                          <label> Prénom pére</label>
+                          <input type="text" class="form-control" name="prenomPere" [(ngModel)]="family.prenomPere" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>Date de naissance</label>
+                          <input type="date" class="form-control" name="datedenaissancePere"
+                            [(ngModel)]="family.datedenaissancePere" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA</label>
+                          <input type="text" class="form-control" name="hbaPere" [(ngModel)]="family.hbaPere" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Hbf</label>
+                          <input type="text" class="form-control" name="hbfPere" [(ngModel)]="family.hbfPere" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA²</label>
+                          <input type="text" class="form-control" name="hba2Pere" [(ngModel)]="family.hba2Pere" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HLA</label>
+                          <input type="text" class="form-control" name="hlaPere" [(ngModel)]="family.hlaPere" />
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="card mb-4">
+                    <div class="card-body">
+
+                      <div>
+                        <div class="form-group">
+                          <label> Prénom mére</label>
+                          <input type="text" class="form-control" name="prenomMere" [(ngModel)]="family.prenomMere" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>Date de naissance</label>
+                          <input type="date" class="form-control" name="datedenaissanceMere"
+                            [(ngModel)]="family.datedenaissanceMere" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA</label>
+                          <input type="text" class="form-control" name="hbaMere" [(ngModel)]="family.hbaMere" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Hbf</label>
+                          <input type="text" class="form-control" name="hbfMere" [(ngModel)]="family.hbfMere" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA²</label>
+                          <input type="text" class="form-control" name="hba2Mere" [(ngModel)]="family.hba2Mere" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HLA</label>
+                          <input type="text" class="form-control" name="hlaMere" [(ngModel)]="family.hlaMere" />
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="card mb-4">
+                    <div class="card-body">
+
+                      <div>
+                        <div class="form-group">
+                          <label> Prénom fratrie 1</label>
+                          <input type="text" class="form-control" name="prenomFratrie1"
+                            [(ngModel)]="family.prenomFratrie1" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>Date de naissance</label>
+                          <input type="date" class="form-control" name="datedenaissanceFratrie1"
+                            [(ngModel)]="family.datedenaissanceFratrie1" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA</label>
+                          <input type="text" class="form-control" name="hbaFratrie1" [(ngModel)]="family.hbaFratrie1" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Hbf</label>
+                          <input type="text" class="form-control" name="hbfFratrie1" [(ngModel)]="family.hbfFratrie1" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA²</label>
+                          <input type="text" class="form-control" name="hba2Fratrie1"
+                            [(ngModel)]="family.hba2Fratrie1" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HLA</label>
+                          <input type="text" class="form-control" name="hlaFratrie1" [(ngModel)]="family.hlaFratrie1" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Prénom fratrie 2</label>
+                          <input type="text" class="form-control" name="prenomFratrie2"
+                            [(ngModel)]="family.prenomFratrie2" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>Date de naissance</label>
+                          <input type="date" class="form-control" name="datedenaissanceFratrie2"
+                            [(ngModel)]="family.datedenaissanceFratrie2" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA</label>
+                          <input type="text" class="form-control" name="hbaFratrie2" [(ngModel)]="family.hbaFratrie2" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Hbf</label>
+                          <input type="text" class="form-control" name="hbfFratrie2" [(ngModel)]="family.hbfFratrie2" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA²</label>
+                          <input type="text" class="form-control" name="hba2Fratrie2"
+                            [(ngModel)]="family.hba2Fratrie2" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HLA</label>
+                          <input type="text" class="form-control" name="hlaFratrie2" [(ngModel)]="family.hlaFratrie2" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Prénom fratrie 3</label>
+                          <input type="text" class="form-control" name="prenomFratrie3"
+                            [(ngModel)]="family.prenomFratrie3" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>Date de naissance</label>
+                          <input type="date" class="form-control" name="datedenaissanceFratrie3"
+                            [(ngModel)]="family.datedenaissanceFratrie3" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA</label>
+                          <input type="text" class="form-control" name="hbaFratrie3" [(ngModel)]="family.hbaFratrie3" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Hbf</label>
+                          <input type="text" class="form-control" name="hbfFratrie3" [(ngModel)]="family.hbfFratrie3" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA²</label>
+                          <input type="text" class="form-control" name="hba2Fratrie3"
+                            [(ngModel)]="family.hba2Fratrie3" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HLA</label>
+                          <input type="text" class="form-control" name="hlaFratrie3" [(ngModel)]="family.hlaFratrie3" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Prénom fratrie 4</label>
+                          <input type="text" class="form-control" name="prenomFratrie4"
+                            [(ngModel)]="family.prenomFratrie4" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>Date de naissance</label>
+                          <input type="date" class="form-control" name="datedenaissanceFratrie4"
+                            [(ngModel)]="family.datedenaissanceFratrie4" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA</label>
+                          <input type="text" class="form-control" name="hbaFratrie4" [(ngModel)]="family.hbaFratrie4" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Hbf</label>
+                          <input type="text" class="form-control" name="hbfFratrie4" [(ngModel)]="family.hbfFratrie4" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA²</label>
+                          <input type="text" class="form-control" name="hba2Fratrie4"
+                            [(ngModel)]="family.hba2Fratrie4" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HLA</label>
+                          <input type="text" class="form-control" name="hlaFratrie4" [(ngModel)]="family.hlaFratrie4" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Prénom fratrie 5</label>
+                          <input type="text" class="form-control" name="prenomFratrie5"
+                            [(ngModel)]="family.prenomFratrie5" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>Date de naissance</label>
+                          <input type="date" class="form-control" name="datedenaissanceFratrie5"
+                            [(ngModel)]="family.datedenaissanceFratrie5" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA</label>
+                          <input type="text" class="form-control" name="hbaFratrie5" [(ngModel)]="family.hbaFratrie5" />
+                        </div>
+                      </div>
+                      <div class="w-100"></div>
+                      <div>
+                        <div class="form-group">
+                          <label> Hbf</label>
+                          <input type="text" class="form-control" name="hbfFratrie5" [(ngModel)]="family.hbfFratrie5" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HbA²</label>
+                          <input type="text" class="form-control" name="hba2Fratrie5"
+                            [(ngModel)]="family.hba2Fratrie5" />
+                        </div>
+                      </div>
+                      <div>
+                        <div class="form-group">
+                          <label>HLA</label>
+                          <input type="text" class="form-control" name="hlaFratrie5" [(ngModel)]="family.hlaFratrie5" />
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" (click)='modifyFamily()' class="btn btn-primary">Modifier</button>
+                    <button type="button" (click)="onReset()" class="btn btn-danger"
+                      data-dismiss="modal">Annuler</button>
+                  </div>
+                </form>
+
+              </div>
+
+            </div>
+          </ng-template>
+          <div class="card-body" *ngIf="!family">
+            <app-formulaire-famille></app-formulaire-famille>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <app-footer></app-footer>
+  </div>
+</div>
